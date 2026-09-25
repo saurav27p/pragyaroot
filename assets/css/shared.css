@@ -1616,8 +1616,8 @@ html.dark #pragyaroot-root .fmsg.er{
     pointer-events:none;
   }
 
-  .pr-header-logo{
-    display:none;
+  .pr-header .pr-header-logo{
+  display:none !important;
   }
 
   .pr-header-inner{
