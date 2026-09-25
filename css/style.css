@@ -1,6 +1,11 @@
-/* =========================================
-   PragyaRoot — Global Styles
-   ========================================= */
+/* =========================================================
+   PRAGYAROOT — MAIN STYLESHEET
+   ========================================================= */
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
 
 :root {
   --bg: #ffffff;
@@ -23,8 +28,8 @@
 
   --radius: 14px;
 
-  --shadow: 0 18px 55px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 24px 65px rgba(0, 0, 0, 0.12);
+  --shadow: 0 18px 55px rgba(0, 0, 0, .08);
+  --shadow-md: 0 24px 65px rgba(0, 0, 0, .12);
 
   --ease: cubic-bezier(.22, 1, .36, 1);
 
@@ -35,9 +40,9 @@
 }
 
 
-/* =========================================
-   Dark Mode
-   ========================================= */
+/* =========================================================
+   DARK MODE
+   ========================================================= */
 
 html.dark {
   --bg: #090909;
@@ -55,8 +60,8 @@ html.dark {
   --accent: #ffffff;
   --accent-light: #222222;
 
-  --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
-  --shadow-md: 0 28px 75px rgba(0, 0, 0, 0.38);
+  --shadow: 0 20px 60px rgba(0, 0, 0, .28);
+  --shadow-md: 0 28px 75px rgba(0, 0, 0, .38);
 
   --logo-filter: invert(1);
 
@@ -65,9 +70,9 @@ html.dark {
 }
 
 
-/* =========================================
-   Reset
-   ========================================= */
+/* =========================================================
+   RESET
+   ========================================================= */
 
 * {
   box-sizing: border-box;
@@ -81,6 +86,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
+
   font-family:
     Inter,
     system-ui,
@@ -88,6 +94,14 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
+
+  transition:
+    background .25s ease,
+    color .25s ease;
+}
+
+body.drawer-open {
+  overflow: hidden;
 }
 
 a {
@@ -101,22 +115,14 @@ textarea {
   font: inherit;
 }
 
-
-/* =========================================
-   Main Content
-   ========================================= */
-
-.pr-main {
-  min-height: 70vh;
-  margin-left: var(--sidebar);
-  padding-top: var(--header);
-  background: #ffffff;
+img {
+  max-width: 100%;
 }
 
 
-/* =========================================
-   Component Placeholders
-   ========================================= */
+/* =========================================================
+   COMPONENT PLACEHOLDERS
+   ========================================================= */
 
 #header-placeholder,
 #sidebar-placeholder,
@@ -125,31 +131,20 @@ textarea {
 }
 
 
-/* =========================================
-   Responsive
-   ========================================= */
-
-@media (max-width: 980px) {
-
-  .pr-main {
-    margin-left: 0;
-  }
-
-}
-/* =========================================
-   PragyaRoot Header
-   ========================================= */
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 .pr-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+
   height: var(--header);
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
 
   padding: 0 24px;
 
@@ -157,10 +152,11 @@ textarea {
   border-bottom: 1px solid var(--line);
 
   z-index: 1000;
+
+  transition:
+    background .25s ease,
+    border-color .25s ease;
 }
-
-
-/* Header left */
 
 .pr-header-left {
   display: flex;
@@ -169,9 +165,6 @@ textarea {
 
   min-width: 0;
 }
-
-
-/* Logo */
 
 .pr-logo-link {
   display: flex;
@@ -195,12 +188,12 @@ textarea {
 }
 
 
-/* Desktop navigation */
+/* Header navigation */
 
 .pr-header-nav {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 
   margin-left: auto;
   margin-right: 18px;
@@ -235,7 +228,8 @@ textarea {
   gap: 4px;
 }
 
-.pr-header-icon {
+.pr-header-icon,
+.pr-menu-btn {
   width: 38px;
   height: 38px;
 
@@ -256,87 +250,28 @@ textarea {
     transform .2s ease;
 }
 
-.pr-header-icon:hover {
-  background: var(--surface-3);
-}
-
-.pr-header-icon:active {
-  transform: scale(.94);
-}
-
-
-/* Mobile menu button */
-
-.pr-menu-btn {
-  display: none;
-
-  width: 38px;
-  height: 38px;
-
-  align-items: center;
-  justify-content: center;
-
-  border: 0;
-  border-radius: 50%;
-
-  background: transparent;
-  color: var(--text);
-
-  cursor: pointer;
-}
-
+.pr-header-icon:hover,
 .pr-menu-btn:hover {
   background: var(--surface-3);
 }
 
+.pr-header-icon:active,
+.pr-menu-btn:active {
+  transform: scale(.94);
+}
 
-/* =========================================
-   Mobile Header
-   ========================================= */
-
-@media (max-width: 980px) {
-
-  .pr-header {
-    padding: 0 18px;
-  }
-
-  .pr-menu-btn {
-    display: inline-flex;
-  }
-
-  .pr-header-nav {
-    display: none;
-  }
-
-  .pr-header-actions {
-    margin-left: auto;
-  }
-
+.pr-menu-btn {
+  display: none;
 }
 
 
-@media (max-width: 430px) {
-
-  .pr-header {
-    padding: 0 12px;
-  }
-
-  .pr-logo {
-    height: 34px;
-    max-width: 150px;
-  }
-
-  .pr-header-left {
-    gap: 10px;
-  }
-
-}
-/* =========================================
-   PragyaRoot Sidebar
-   ========================================= */
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
 
 .pr-sidebar {
   position: fixed;
+
   top: var(--header);
   left: 0;
   bottom: 0;
@@ -373,8 +308,8 @@ textarea {
   font-weight: 500;
 
   transition:
-    background .2s ease,
-    color .2s ease;
+    color .2s ease,
+    background .2s ease;
 }
 
 .pr-sidebar-link i {
@@ -395,15 +330,681 @@ textarea {
 }
 
 
-/* =========================================
-   Mobile Drawer
-   ========================================= */
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.pr-main {
+  min-height: 100vh;
+
+  margin-left: var(--sidebar);
+  padding-top: var(--header);
+
+  background: #ffffff;
+}
+
+html.dark .pr-main {
+  background: var(--bg);
+}
+
+
+/* =========================================================
+   HOMEPAGE CONTAINER
+   ========================================================= */
+
+.pr-main > section {
+  width: min(1058px, calc(100% - 48px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.pr-home-hero {
+  padding-top: 105px;
+  padding-bottom: 72px;
+
+  text-align: center;
+}
+
+.pr-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin: 0 0 22px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.pr-eyebrow-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--text);
+
+  animation: prPulse 2s infinite;
+}
+
+@keyframes prPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: .35;
+  }
+}
+
+.pr-home-hero h1 {
+  max-width: 850px;
+
+  margin: 0 auto;
+
+  font-size: clamp(42px, 6vw, 76px);
+  line-height: .98;
+
+  letter-spacing: -.055em;
+  font-weight: 800;
+}
+
+.pr-home-hero h1 span {
+  color: var(--muted-2);
+}
+
+.pr-hero-text {
+  max-width: 590px;
+
+  margin: 26px auto 0;
+
+  color: var(--muted);
+
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.pr-hero-rotator {
+  margin-top: 30px;
+
+  color: var(--muted);
+
+  font-size: 14px;
+  font-weight: 600;
+
+  letter-spacing: .04em;
+}
+
+.pr-hero-rotator strong {
+  color: var(--text);
+}
+
+.pr-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px;
+
+  margin-top: 28px;
+}
+
+.pr-pills a {
+  padding: 9px 15px;
+
+  border: 1px solid var(--line);
+  border-radius: 999px;
+
+  background: var(--surface);
+
+  color: var(--text);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition:
+    border-color .2s ease,
+    background .2s ease,
+    transform .2s ease;
+}
+
+.pr-pills a:hover {
+  background: var(--surface-2);
+  border-color: var(--line-strong);
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   TRUST CARD
+   ========================================================= */
+
+.pr-trust-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+
+  padding: 40px;
+
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+
+  background: var(--surface-2);
+
+  box-shadow: var(--shadow);
+}
+
+.pr-section-label {
+  margin: 0 0 10px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.pr-trust-card h2,
+.pr-section-heading h2 {
+  margin: 0;
+
+  font-size: 30px;
+  line-height: 1.15;
+
+  letter-spacing: -.035em;
+}
+
+.pr-trust-card p:not(.pr-section-label) {
+  max-width: 500px;
+
+  margin: 16px 0 0;
+
+  color: var(--muted);
+
+  line-height: 1.7;
+}
+
+.pr-trust-items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+
+  align-self: center;
+}
+
+.pr-trust-items div {
+  padding-left: 16px;
+
+  border-left: 1px solid var(--line);
+}
+
+.pr-trust-items strong {
+  display: block;
+
+  font-size: 13px;
+}
+
+.pr-trust-items span {
+  display: block;
+
+  margin-top: 6px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   TAGS
+   ========================================================= */
+
+.pr-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  padding-top: 24px;
+}
+
+.pr-tags span {
+  padding: 7px 11px;
+
+  border-radius: 7px;
+
+  background: var(--surface-3);
+
+  color: var(--muted);
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   GENERAL SECTIONS
+   ========================================================= */
+
+.pr-home-section {
+  padding-top: 88px;
+}
+
+.pr-section-heading {
+  margin-bottom: 25px;
+}
+
+.pr-section-heading > p {
+  margin-bottom: 9px;
+}
+
+.pr-section-heading > p:last-child {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   SUBJECTS
+   ========================================================= */
+
+.pr-subject-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.pr-subj-real,
+.pr-subj-dummy {
+  min-height: 190px;
+
+  padding: 22px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+
+  background: var(--surface);
+
+  transition:
+    transform .25s var(--ease),
+    border-color .25s ease,
+    box-shadow .25s ease;
+}
+
+.pr-subj-real:hover {
+  transform: translateY(-4px);
+
+  border-color: var(--line-strong);
+
+  box-shadow: var(--shadow);
+}
+
+.pr-subject-number {
+  color: var(--muted-2);
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: .1em;
+}
+
+.pr-subj-real strong,
+.pr-subj-dummy strong {
+  margin-top: auto;
+
+  font-size: 21px;
+
+  letter-spacing: -.025em;
+}
+
+.pr-subj-real small,
+.pr-subj-dummy small {
+  margin-top: 7px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+}
+
+.pr-subj-dummy {
+  background: var(--surface-2);
+  opacity: .72;
+}
+
+
+/* =========================================================
+   GRAMMAR
+   ========================================================= */
+
+.pr-grammar-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.pr-grammar-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 92px;
+
+  padding: 22px;
+
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+
+  background: var(--surface);
+}
+
+.pr-grammar-item strong {
+  font-size: 16px;
+}
+
+.pr-grammar-item span {
+  color: var(--muted);
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   EXPLORE
+   ========================================================= */
+
+.pr-explore-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.pr-games-real,
+.pr-tools-item {
+  min-height: 180px;
+
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+
+  background: var(--surface);
+
+  transition:
+    transform .25s var(--ease),
+    box-shadow .25s ease,
+    border-color .25s ease;
+}
+
+.pr-games-real:hover {
+  transform: translateY(-4px);
+
+  border-color: var(--line-strong);
+
+  box-shadow: var(--shadow);
+}
+
+.pr-tools-item {
+  background: var(--surface-2);
+  opacity: .72;
+}
+
+.pr-explore-icon {
+  width: 42px;
+  height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: auto;
+
+  border-radius: 11px;
+
+  background: var(--surface-3);
+
+  color: var(--text);
+}
+
+.pr-games-real strong,
+.pr-tools-item strong {
+  font-size: 20px;
+
+  letter-spacing: -.025em;
+}
+
+.pr-games-real small,
+.pr-tools-item small {
+  margin-top: 6px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.pr-contact {
+  margin-top: 88px;
+  margin-bottom: 90px;
+
+  padding: 40px;
+
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+
+  background: var(--surface-2);
+}
+
+.pr-contact-form {
+  max-width: 700px;
+
+  margin-top: 30px;
+
+  display: grid;
+  gap: 18px;
+}
+
+.pr-contact-form label {
+  display: grid;
+  gap: 8px;
+
+  color: var(--text);
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.pr-contact-form input,
+.pr-contact-form textarea {
+  width: 100%;
+
+  padding: 13px 14px;
+
+  border: 1px solid var(--line);
+  border-radius: 9px;
+
+  outline: none;
+
+  background: var(--surface);
+  color: var(--text);
+
+  resize: vertical;
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+.pr-contact-form input:focus,
+.pr-contact-form textarea:focus {
+  border-color: var(--text);
+
+  box-shadow: 0 0 0 3px var(--surface-3);
+}
+
+.pr-contact-form button {
+  width: fit-content;
+
+  padding: 12px 18px;
+
+  border: 0;
+  border-radius: 9px;
+
+  background: var(--text);
+  color: var(--surface);
+
+  cursor: pointer;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition:
+    opacity .2s ease,
+    transform .2s ease;
+}
+
+.pr-contact-form button:hover {
+  opacity: .86;
+  transform: translateY(-1px);
+}
+
+.pr-form-message {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.pr-footer {
+  margin-left: var(--sidebar);
+
+  padding: 65px 40px 25px;
+
+  border-top: 1px solid var(--line);
+
+  background: var(--surface);
+}
+
+.pr-footer-top {
+  width: min(1058px, 100%);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+
+.pr-footer-about {
+  max-width: 340px;
+}
+
+.pr-footer-logo-link {
+  display: inline-flex;
+}
+
+.pr-footer-logo {
+  width: auto;
+  height: 36px;
+  max-width: 175px;
+
+  object-fit: contain;
+
+  filter: var(--logo-filter);
+
+  transition: filter .25s ease;
+}
+
+.pr-footer-about p {
+  margin: 18px 0 0;
+
+  color: var(--muted);
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.pr-footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pr-footer-column h3 {
+  margin: 0 0 7px;
+
+  font-size: 12px;
+
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.pr-footer-column a {
+  width: fit-content;
+
+  color: var(--muted);
+
+  font-size: 13px;
+
+  transition: color .2s ease;
+}
+
+.pr-footer-column a:hover {
+  color: var(--text);
+}
+
+.pr-footer-bottom {
+  width: min(1058px, 100%);
+  margin: 55px auto 0;
+
+  padding-top: 20px;
+
+  border-top: 1px solid var(--line);
+
+  color: var(--muted-2);
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   MOBILE DRAWER
+   ========================================================= */
 
 .pr-drawer-overlay {
   position: fixed;
   inset: 0;
 
   background: rgba(0, 0, 0, .45);
+
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
 
@@ -507,13 +1108,6 @@ textarea {
   background: var(--surface-3);
 }
 
-
-/* Drawer open state */
-
-body.drawer-open {
-  overflow: hidden;
-}
-
 body.drawer-open .pr-mobile-drawer {
   transform: translateX(0);
 }
@@ -524,17 +1118,46 @@ body.drawer-open .pr-drawer-overlay {
 }
 
 
-/* =========================================
-   Desktop / Mobile Visibility
-   ========================================= */
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 
 @media (max-width: 980px) {
+
+  .pr-menu-btn {
+    display: inline-flex;
+  }
+
+  .pr-header-nav {
+    display: none;
+  }
+
+  .pr-header {
+    padding: 0 18px;
+  }
 
   .pr-sidebar {
     display: none;
   }
 
+  .pr-main {
+    margin-left: 0;
+  }
+
+  .pr-footer {
+    margin-left: 0;
+  }
+
+  .pr-trust-card {
+    grid-template-columns: 1fr;
+  }
+
+  .pr-trust-items {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
 }
+
 
 @media (min-width: 981px) {
 
@@ -543,4 +1166,149 @@ body.drawer-open .pr-drawer-overlay {
     display: none;
   }
 
+}
+
+
+@media (max-width: 720px) {
+
+  .pr-main > section {
+    width: min(100% - 30px, 1058px);
+  }
+
+  .pr-home-hero {
+    padding-top: 75px;
+    padding-bottom: 55px;
+  }
+
+  .pr-home-hero h1 {
+    font-size: clamp(39px, 11vw, 58px);
+  }
+
+  .pr-hero-text {
+    font-size: 15px;
+  }
+
+  .pr-trust-card,
+  .pr-contact {
+    padding: 27px;
+  }
+
+  .pr-trust-items {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .pr-trust-items div {
+    padding-left: 14px;
+  }
+
+  .pr-subject-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pr-explore-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pr-footer {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .pr-footer-top {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px 25px;
+  }
+
+  .pr-footer-about {
+    grid-column: 1 / -1;
+  }
+
+}
+
+
+@media (max-width: 430px) {
+
+  .pr-header {
+    padding: 0 12px;
+  }
+
+  .pr-logo {
+    height: 34px;
+    max-width: 150px;
+  }
+
+  .pr-header-left {
+    gap: 10px;
+  }
+
+  .pr-header-actions {
+    gap: 0;
+  }
+
+  .pr-header-icon,
+  .pr-menu-btn {
+    width: 35px;
+    height: 35px;
+  }
+
+  .pr-main > section {
+    width: calc(100% - 24px);
+  }
+
+  .pr-home-hero {
+    padding-top: 62px;
+  }
+
+  .pr-home-hero h1 {
+    font-size: 40px;
+  }
+
+  .pr-pills {
+    gap: 6px;
+  }
+
+  .pr-pills a {
+    padding: 8px 11px;
+    font-size: 12px;
+  }
+
+  .pr-subject-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pr-grammar-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pr-trust-card,
+  .pr-contact {
+    padding: 22px;
+  }
+
+  .pr-trust-card h2,
+  .pr-section-heading h2 {
+    font-size: 26px;
+  }
+
+  .pr-footer-top {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pr-footer-about {
+    grid-column: 1 / -1;
+  }
+
+}
+
+
+/* =========================================================
+   LOGO FILTER
+   Only PragyaRoot logos use this variable.
+   Other images remain unchanged.
+   ========================================================= */
+
+.pr-logo,
+.pr-footer-logo {
+  filter: var(--logo-filter);
 }
