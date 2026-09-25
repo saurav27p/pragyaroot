@@ -1,17 +1,17 @@
 /* =========================================================
-   PRAGYAROOT — COMPLETE STYLESHEET
+   PRAGYAROOT — COMPLETE CSS
+   Desktop sidebar + mobile drawer + AMOLED dark mode
    ========================================================= */
 
 
 /* =========================================================
-   1. ROOT VARIABLES
+   VARIABLES
    ========================================================= */
 
 :root {
-
   --bg: #ffffff;
   --surface: #ffffff;
-  --surface-2: #f7f7f7;
+  --surface-2: #f6f6f6;
   --surface-3: #eeeeee;
 
   --text: #111111;
@@ -21,37 +21,26 @@
   --border: #e5e5e5;
   --border-soft: #eeeeee;
 
-  --accent: #111111;
-
   --header-bg: #ffffff;
   --sidebar-bg: #ffffff;
   --footer-bg: #ffffff;
-
   --card-bg: #ffffff;
   --input-bg: #ffffff;
 
   --back-bg: #111111;
   --back-arrow: #ffffff;
 
-  --logo-filter: none;
-
   --header-height: 72px;
-  --sidebar-width: 230px;
+  --sidebar-width: 235px;
 
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
+  --logo-filter: none;
 
   --transition: 180ms ease;
 }
 
 
 /* =========================================================
-   2. AMOLED DARK THEME
-   Supports both:
-   body.dark-theme
-   and
-   html[data-theme="dark"]
+   AMOLED DARK MODE
    ========================================================= */
 
 html[data-theme="dark"],
@@ -61,22 +50,19 @@ body.dark-theme {
 
   --bg: #000000;
   --surface: #000000;
-  --surface-2: #0a0a0a;
-  --surface-3: #111111;
+  --surface-2: #0b0b0b;
+  --surface-3: #141414;
 
   --text: #f5f5f5;
-  --text-soft: #b8b8b8;
+  --text-soft: #b5b5b5;
   --text-muted: #777777;
 
-  --border: #222222;
-  --border-soft: #151515;
-
-  --accent: #ffffff;
+  --border: #242424;
+  --border-soft: #161616;
 
   --header-bg: #000000;
   --sidebar-bg: #000000;
   --footer-bg: #000000;
-
   --card-bg: #080808;
   --input-bg: #080808;
 
@@ -88,7 +74,7 @@ body.dark-theme {
 
 
 /* =========================================================
-   3. GLOBAL RESET
+   RESET
    ========================================================= */
 
 *,
@@ -97,20 +83,15 @@ body.dark-theme {
   box-sizing: border-box;
 }
 
-
 html {
   scroll-behavior: smooth;
 }
 
-
 body {
-
   margin: 0;
-
   min-height: 100vh;
 
   background: var(--bg);
-
   color: var(--text);
 
   font-family:
@@ -130,46 +111,30 @@ body {
     color var(--transition);
 }
 
-
 img {
-
   display: block;
-
   max-width: 100%;
 }
-
 
 button,
 input,
 textarea,
 select {
-
   font: inherit;
 }
 
-
 button {
-
   cursor: pointer;
 }
 
-
 a {
-
   color: inherit;
-
-  text-decoration: none;
-}
-
-
-a:hover {
-
   text-decoration: none;
 }
 
 
 /* =========================================================
-   4. HEADER
+   HEADER
    ========================================================= */
 
 .pr-header {
@@ -183,14 +148,7 @@ a:hover {
   height: var(--header-height);
 
   display: flex;
-
   align-items: center;
-
-  justify-content: space-between;
-
-  gap: 20px;
-
-  padding: 0 24px;
 
   background: var(--header-bg);
 
@@ -198,45 +156,46 @@ a:hover {
 
   z-index: 5000;
 
-  transition:
-    background-color var(--transition),
-    border-color var(--transition);
+  padding: 0 24px;
 }
 
-
-/* Header left */
 
 .pr-header-left {
 
   display: flex;
-
   align-items: center;
 
-  gap: 18px;
-
-  min-width: 230px;
+  width: var(--sidebar-width);
 
   flex-shrink: 0;
 }
 
 
-/* Logo */
+.pr-menu-btn {
+
+  display: none;
+
+  width: 40px;
+  height: 40px;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: transparent;
+  color: var(--text);
+
+  align-items: center;
+  justify-content: center;
+}
+
 
 .pr-logo-link {
 
   display: flex;
-
   align-items: center;
 
-  justify-content: flex-start;
-
   width: 180px;
-
-  height: 46px;
-
-  overflow: visible;
-
-  flex-shrink: 0;
+  height: 48px;
 }
 
 
@@ -245,56 +204,19 @@ a:hover {
   display: block;
 
   width: 180px;
-
   height: auto;
 
   max-height: 44px;
 
   object-fit: contain;
-
   object-position: left center;
 
   filter: var(--logo-filter);
-
-  transition: filter var(--transition);
-}
-
-
-/* Menu button */
-
-.pr-menu-btn {
-
-  display: none;
-
-  align-items: center;
-
-  justify-content: center;
-
-  width: 40px;
-  height: 40px;
-
-  padding: 0;
-
-  border: 0;
-
-  border-radius: 8px;
-
-  background: transparent;
-
-  color: var(--text);
-
-  font-size: 18px;
-}
-
-
-.pr-menu-btn:hover {
-
-  background: var(--surface-2);
 }
 
 
 /* =========================================================
-   5. HEADER NAV
+   DESKTOP HEADER NAV
    ========================================================= */
 
 .pr-header-nav {
@@ -302,23 +224,19 @@ a:hover {
   display: flex;
 
   align-items: center;
-
   justify-content: center;
-
-  gap: 4px;
 
   flex: 1;
 
-  min-width: 0;
+  gap: 3px;
 }
 
 
 .pr-header-nav a {
 
-  display: inline-flex;
+  display: flex;
 
   align-items: center;
-
   justify-content: center;
 
   min-height: 38px;
@@ -330,52 +248,35 @@ a:hover {
   color: var(--text-soft);
 
   font-size: 13px;
-
   font-weight: 500;
-
-  white-space: nowrap;
-
-  transition:
-    background-color var(--transition),
-    color var(--transition);
 }
 
 
-.pr-header-nav a:hover {
-
-  color: var(--text);
-
-  background: var(--surface-2);
-}
-
-
+.pr-header-nav a:hover,
 .pr-header-nav a.active {
 
-  color: var(--text);
-
   background: var(--surface-2);
 
-  font-weight: 600;
+  color: var(--text);
 }
 
 
 /* =========================================================
-   6. HEADER ACTIONS
+   HEADER ACTIONS
    ========================================================= */
 
 .pr-header-actions {
 
   display: flex;
-
   align-items: center;
 
-  justify-content: flex-end;
+  gap: 3px;
 
-  gap: 4px;
-
-  min-width: 120px;
+  width: 130px;
 
   flex-shrink: 0;
+
+  justify-content: flex-end;
 }
 
 
@@ -384,65 +285,58 @@ a:hover {
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
   width: 40px;
   height: 40px;
 
-  padding: 0;
-
   border: 0;
-
   border-radius: 9px;
 
   background: transparent;
 
   color: var(--text);
-
-  font-size: 16px;
-
-  transition:
-    background-color var(--transition),
-    color var(--transition);
 }
 
 
 .pr-header-icon:hover {
-
   background: var(--surface-2);
 }
 
 
 /* =========================================================
-   7. DESKTOP SIDEBAR
+   ★ DESKTOP LEFT SIDEBAR
    ========================================================= */
 
 .pr-sidebar {
 
-  position: fixed;
+  display: block !important;
 
-  top: var(--header-height);
+  position: fixed !important;
 
-  left: 0;
+  top: var(--header-height) !important;
 
-  bottom: 0;
+  left: 0 !important;
 
-  width: var(--sidebar-width);
+  bottom: 0 !important;
 
-  padding: 22px 14px;
+  width: var(--sidebar-width) !important;
 
-  background: var(--sidebar-bg);
+  padding: 24px 14px !important;
 
-  border-right: 1px solid var(--border);
+  background: var(--sidebar-bg) !important;
+
+  border-right: 1px solid var(--border) !important;
 
   overflow-y: auto;
 
-  z-index: 4000;
+  visibility: visible !important;
 
-  transition:
-    background-color var(--transition),
-    border-color var(--transition);
+  opacity: 1 !important;
+
+  transform: none !important;
+
+  z-index: 4000 !important;
 }
 
 
@@ -491,50 +385,47 @@ a:hover {
   flex-shrink: 0;
 
   text-align: center;
-
-  font-size: 15px;
 }
 
 
 .pr-sidebar-link:hover {
 
-  color: var(--text);
-
   background: var(--surface-2);
+
+  color: var(--text);
 }
 
 
 .pr-sidebar-link.active {
 
-  color: var(--text);
-
   background: var(--surface-2);
+
+  color: var(--text);
 
   font-weight: 600;
 }
 
 
 /* =========================================================
-   8. MAIN CONTENT
+   MAIN
    ========================================================= */
 
 .pr-main {
 
-  margin-left: var(--sidebar-width);
+  display: block;
+
+  margin-left: var(--sidebar-width) !important;
 
   padding-top: var(--header-height);
 
-  min-height: calc(100vh - var(--header-height));
+  min-height: 100vh;
 
   background: var(--bg);
-
-  transition:
-    background-color var(--transition);
 }
 
 
 /* =========================================================
-   9. HOME HERO
+   HOME
    ========================================================= */
 
 .pr-home-hero {
@@ -543,17 +434,16 @@ a:hover {
 
   margin: 0 auto;
 
-  padding: 90px 50px 70px;
+  padding: 85px 45px 65px;
 }
 
 
 .pr-eyebrow {
 
   display: flex;
-
   align-items: center;
 
-  gap: 9px;
+  gap: 8px;
 
   margin: 0 0 18px;
 
@@ -577,8 +467,6 @@ a:hover {
   border-radius: 50%;
 
   background: var(--text);
-
-  flex-shrink: 0;
 }
 
 
@@ -590,13 +478,11 @@ a:hover {
 
   color: var(--text);
 
-  font-size: clamp(42px, 6vw, 76px);
+  font-size: clamp(44px, 6vw, 76px);
 
   line-height: 1.04;
 
   letter-spacing: -.055em;
-
-  font-weight: 700;
 }
 
 
@@ -617,8 +503,6 @@ a:hover {
   color: var(--text-soft);
 
   font-size: 17px;
-
-  line-height: 1.7;
 }
 
 
@@ -626,13 +510,11 @@ a:hover {
 
   display: flex;
 
-  align-items: center;
-
   flex-wrap: wrap;
 
   gap: 8px;
 
-  margin-top: 30px;
+  margin-top: 28px;
 
   color: var(--text-soft);
 
@@ -641,16 +523,9 @@ a:hover {
 
 
 .pr-hero-rotator strong {
-
   color: var(--text);
-
-  font-weight: 700;
-
-  letter-spacing: .04em;
 }
 
-
-/* Pills */
 
 .pr-pills {
 
@@ -658,21 +533,15 @@ a:hover {
 
   flex-wrap: wrap;
 
-  gap: 9px;
+  gap: 8px;
 
-  margin-top: 25px;
+  margin-top: 24px;
 }
 
 
 .pr-pills a {
 
-  display: inline-flex;
-
-  align-items: center;
-
-  min-height: 38px;
-
-  padding: 0 15px;
+  padding: 7px 15px;
 
   border: 1px solid var(--border);
 
@@ -683,33 +552,36 @@ a:hover {
   color: var(--text-soft);
 
   font-size: 13px;
-
-  transition:
-    background-color var(--transition),
-    color var(--transition),
-    border-color var(--transition);
 }
 
 
 .pr-pills a:hover {
 
-  color: var(--text);
-
   background: var(--surface-2);
 
-  border-color: var(--text-muted);
+  color: var(--text);
 }
 
 
 /* =========================================================
-   10. TRUST CARD
+   GENERAL HOME SECTIONS
    ========================================================= */
 
-.pr-trust-card {
+.pr-trust-card,
+.pr-home-section,
+.pr-tags,
+.pr-contact {
 
   max-width: 1100px;
 
-  margin: 0 auto 70px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.pr-trust-card {
+
+  margin-bottom: 65px;
 
   padding: 30px;
 
@@ -721,7 +593,7 @@ a:hover {
 
   border: 1px solid var(--border);
 
-  border-radius: var(--radius-lg);
+  border-radius: 16px;
 
   background: var(--card-bg);
 }
@@ -729,13 +601,9 @@ a:hover {
 
 .pr-trust-card h2 {
 
-  margin: 7px 0 10px;
+  margin: 6px 0 10px;
 
   font-size: 27px;
-
-  line-height: 1.2;
-
-  letter-spacing: -.025em;
 }
 
 
@@ -755,9 +623,7 @@ a:hover {
 
   grid-template-columns: repeat(3, 1fr);
 
-  gap: 18px;
-
-  align-items: center;
+  gap: 15px;
 }
 
 
@@ -767,12 +633,11 @@ a:hover {
 
   flex-direction: column;
 
-  gap: 5px;
+  gap: 4px;
 }
 
 
 .pr-trust-items strong {
-
   font-size: 13px;
 }
 
@@ -785,23 +650,17 @@ a:hover {
 }
 
 
-/* =========================================================
-   11. TAGS
-   ========================================================= */
-
 .pr-tags {
-
-  max-width: 1100px;
-
-  margin: 0 auto 70px;
-
-  padding: 0 50px;
 
   display: flex;
 
   flex-wrap: wrap;
 
   gap: 8px;
+
+  padding: 0 45px;
+
+  margin-bottom: 65px;
 }
 
 
@@ -815,29 +674,13 @@ a:hover {
 
   color: var(--text-muted);
 
-  background: var(--surface);
-
   font-size: 11px;
-
-  font-weight: 600;
-
-  text-transform: uppercase;
-
-  letter-spacing: .04em;
 }
 
 
-/* =========================================================
-   12. HOME SECTIONS
-   ========================================================= */
-
 .pr-home-section {
 
-  max-width: 1100px;
-
-  margin: 0 auto;
-
-  padding: 0 50px 80px;
+  padding: 0 45px 75px;
 }
 
 
@@ -858,8 +701,6 @@ a:hover {
   font-weight: 700;
 
   letter-spacing: .1em;
-
-  text-transform: uppercase;
 }
 
 
@@ -869,22 +710,12 @@ a:hover {
 
   font-size: 30px;
 
-  line-height: 1.2;
-
   letter-spacing: -.03em;
 }
 
 
-.pr-section-heading > p:last-child {
-
-  margin-top: 10px;
-
-  color: var(--text-soft);
-}
-
-
 /* =========================================================
-   13. SUBJECT GRID
+   SUBJECTS
    ========================================================= */
 
 .pr-subject-grid {
@@ -912,14 +743,9 @@ a:hover {
 
   border: 1px solid var(--border);
 
-  border-radius: var(--radius-md);
+  border-radius: 12px;
 
   background: var(--card-bg);
-
-  transition:
-    background-color var(--transition),
-    border-color var(--transition),
-    transform var(--transition);
 }
 
 
@@ -927,15 +753,7 @@ a:hover {
 
   background: var(--surface-2);
 
-  border-color: var(--text-muted);
-
   transform: translateY(-2px);
-}
-
-
-.pr-subj-dummy {
-
-  opacity: .55;
 }
 
 
@@ -946,8 +764,6 @@ a:hover {
   color: var(--text-muted);
 
   font-size: 11px;
-
-  font-weight: 700;
 }
 
 
@@ -961,8 +777,6 @@ a:hover {
 .pr-subj-real small,
 .pr-subj-dummy small {
 
-  margin-top: 4px;
-
   color: var(--text-muted);
 
   font-size: 11px;
@@ -970,7 +784,7 @@ a:hover {
 
 
 /* =========================================================
-   14. GRAMMAR
+   GRAMMAR
    ========================================================= */
 
 .pr-grammar-grid {
@@ -997,14 +811,13 @@ a:hover {
 
   border: 1px solid var(--border);
 
-  border-radius: var(--radius-md);
+  border-radius: 12px;
 
   background: var(--card-bg);
 }
 
 
 .pr-grammar-item strong {
-
   font-size: 15px;
 }
 
@@ -1018,7 +831,7 @@ a:hover {
 
 
 /* =========================================================
-   15. EXPLORE
+   EXPLORE
    ========================================================= */
 
 .pr-explore-grid {
@@ -1046,7 +859,7 @@ a:hover {
 
   border: 1px solid var(--border);
 
-  border-radius: var(--radius-md);
+  border-radius: 12px;
 
   background: var(--card-bg);
 }
@@ -1055,8 +868,6 @@ a:hover {
 .pr-games-real:hover {
 
   background: var(--surface-2);
-
-  border-color: var(--text-muted);
 }
 
 
@@ -1070,7 +881,6 @@ a:hover {
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
   border-radius: 10px;
@@ -1078,38 +888,16 @@ a:hover {
   background: var(--surface-2);
 
   color: var(--text);
-
-  font-size: 17px;
-}
-
-
-.pr-games-real strong,
-.pr-tools-item strong {
-
-  font-size: 17px;
-}
-
-
-.pr-games-real small,
-.pr-tools-item small {
-
-  color: var(--text-muted);
-
-  font-size: 12px;
 }
 
 
 /* =========================================================
-   16. CONTACT
+   CONTACT
    ========================================================= */
 
 .pr-contact {
 
-  max-width: 1100px;
-
-  margin: 0 auto;
-
-  padding: 0 50px 100px;
+  padding: 0 45px 90px;
 }
 
 
@@ -1121,7 +909,7 @@ a:hover {
 
   flex-direction: column;
 
-  gap: 17px;
+  gap: 16px;
 }
 
 
@@ -1136,8 +924,6 @@ a:hover {
   color: var(--text-soft);
 
   font-size: 13px;
-
-  font-weight: 600;
 }
 
 
@@ -1146,23 +932,17 @@ a:hover {
 
   width: 100%;
 
+  padding: 12px 14px;
+
   border: 1px solid var(--border);
 
   border-radius: 9px;
 
-  padding: 12px 14px;
+  outline: none;
 
   background: var(--input-bg);
 
   color: var(--text);
-
-  outline: none;
-
-  resize: vertical;
-
-  transition:
-    border-color var(--transition),
-    background-color var(--transition);
 }
 
 
@@ -1189,39 +969,21 @@ a:hover {
 
   color: var(--bg);
 
-  font-size: 13px;
-
   font-weight: 700;
 }
 
 
-.pr-contact-form button:hover {
-
-  opacity: .85;
-}
-
-
-.pr-form-message {
-
-  margin: 0;
-
-  font-size: 13px;
-}
-
-
 /* =========================================================
-   17. FOOTER
+   FOOTER
    ========================================================= */
 
 .pr-footer {
 
+  margin-left: var(--sidebar-width) !important;
+
   background: var(--footer-bg);
 
   border-top: 1px solid var(--border);
-
-  transition:
-    background-color var(--transition),
-    border-color var(--transition);
 }
 
 
@@ -1231,23 +993,13 @@ a:hover {
 
   margin: 0 auto;
 
-  padding: 55px 50px;
+  padding: 55px 45px;
 
   display: grid;
 
   grid-template-columns: 2fr 1fr 1fr 1fr;
 
-  gap: 45px;
-}
-
-
-.pr-footer-logo-link {
-
-  display: inline-flex;
-
-  align-items: center;
-
-  margin-bottom: 18px;
+  gap: 40px;
 }
 
 
@@ -1264,8 +1016,6 @@ a:hover {
 .pr-footer-about p {
 
   max-width: 380px;
-
-  margin: 0;
 
   color: var(--text-soft);
 
@@ -1287,7 +1037,7 @@ a:hover {
 
 .pr-footer-column h3 {
 
-  margin: 0 0 8px;
+  margin: 0 0 7px;
 
   font-size: 13px;
 }
@@ -1298,26 +1048,17 @@ a:hover {
   color: var(--text-muted);
 
   font-size: 13px;
-
-  transition: color var(--transition);
 }
 
 
 .pr-footer-column a:hover {
-
   color: var(--text);
-}
-
-
-.pr-footer-column i {
-
-  margin-right: 7px;
 }
 
 
 .pr-footer-bottom {
 
-  padding: 18px 50px;
+  padding: 18px 45px;
 
   border-top: 1px solid var(--border);
 
@@ -1330,62 +1071,7 @@ a:hover {
 
 
 /* =========================================================
-   18. BACK TO TOP
-   ========================================================= */
-
-.pr-back-to-top {
-
-  position: fixed;
-
-  right: 22px;
-
-  bottom: 22px;
-
-  width: 42px;
-
-  height: 42px;
-
-  padding: 0;
-
-  border: 0;
-
-  border-radius: 50%;
-
-  background: transparent;
-
-  opacity: 0;
-
-  visibility: hidden;
-
-  transform: translateY(8px);
-
-  transition:
-    opacity var(--transition),
-    visibility var(--transition),
-    transform var(--transition);
-
-  z-index: 4500;
-}
-
-
-.pr-back-to-top.show {
-
-  opacity: 1;
-
-  visibility: visible;
-
-  transform: translateY(0);
-}
-
-
-.pr-back-to-top:hover {
-
-  transform: translateY(-2px);
-}
-
-
-/* =========================================================
-   19. SEARCH OVERLAY
+   SEARCH
    ========================================================= */
 
 .pr-search-overlay {
@@ -1402,17 +1088,13 @@ a:hover {
 
   padding: 100px 20px 30px;
 
-  background: rgba(255,255,255,.94);
+  background: rgba(255,255,255,.95);
 
   opacity: 0;
 
   visibility: hidden;
 
   pointer-events: none;
-
-  transition:
-    opacity var(--transition),
-    visibility var(--transition);
 
   z-index: 7000;
 }
@@ -1441,8 +1123,6 @@ a:hover {
   border-radius: 14px;
 
   background: var(--surface);
-
-  box-shadow: 0 20px 60px rgba(0,0,0,.12);
 }
 
 
@@ -1451,8 +1131,6 @@ a:hover {
   display: flex;
 
   align-items: center;
-
-  gap: 10px;
 
   padding: 14px;
 
@@ -1469,14 +1147,6 @@ a:hover {
   align-items: center;
 
   gap: 10px;
-
-  padding: 0 12px;
-}
-
-
-.pr-search-input-wrap i {
-
-  color: var(--text-muted);
 }
 
 
@@ -1493,8 +1163,6 @@ a:hover {
   background: transparent;
 
   color: var(--text);
-
-  font-size: 15px;
 }
 
 
@@ -1510,14 +1178,6 @@ a:hover {
   background: transparent;
 
   color: var(--text);
-
-  font-size: 17px;
-}
-
-
-.pr-search-close:hover {
-
-  background: var(--surface-2);
 }
 
 
@@ -1525,11 +1185,11 @@ a:hover {
 
   padding: 12px 18px;
 
+  border-bottom: 1px solid var(--border);
+
   color: var(--text-muted);
 
   font-size: 12px;
-
-  border-bottom: 1px solid var(--border);
 }
 
 
@@ -1548,10 +1208,6 @@ a:hover {
   padding: 15px 18px;
 
   border-bottom: 1px solid var(--border-soft);
-
-  color: var(--text);
-
-  transition: background-color var(--transition);
 }
 
 
@@ -1561,55 +1217,15 @@ a:hover {
 }
 
 
-.pr-search-result strong {
-
-  display: block;
-
-  margin-bottom: 4px;
-
-  font-size: 14px;
-}
-
-
-.pr-search-result p {
-
-  margin: 0;
-
-  color: var(--text-soft);
-
-  font-size: 12px;
-
-  line-height: 1.6;
-}
-
-
-.pr-search-highlight {
-
-  animation: prSearchHighlight 1.4s ease;
-}
-
-
-@keyframes prSearchHighlight {
-
-  0% {
-    background: var(--surface-3);
-  }
-
-  100% {
-    background: transparent;
-  }
-}
-
-
 /* =========================================================
-   20. LANGUAGE MENU
+   LANGUAGE MENU
    ========================================================= */
 
 .pr-language-menu {
 
   position: fixed;
 
-  top: 61px;
+  top: 62px;
 
   right: 75px;
 
@@ -1623,14 +1239,11 @@ a:hover {
 
   background: var(--surface);
 
-  box-shadow: 0 12px 35px rgba(0,0,0,.12);
-
   z-index: 6500;
 }
 
 
 .pr-language-menu[hidden] {
-
   display: none;
 }
 
@@ -1656,10 +1269,6 @@ a:hover {
   background: transparent;
 
   color: var(--text-soft);
-
-  font-size: 13px;
-
-  text-align: left;
 }
 
 
@@ -1673,7 +1282,7 @@ a:hover {
 
 
 /* =========================================================
-   21. MOBILE DRAWER
+   MOBILE DRAWER
    ========================================================= */
 
 .pr-drawer-overlay {
@@ -1682,7 +1291,7 @@ a:hover {
 
   inset: 0;
 
-  background: rgba(0,0,0,.58);
+  background: rgba(0,0,0,.6);
 
   backdrop-filter: blur(5px);
 
@@ -1693,10 +1302,6 @@ a:hover {
   pointer-events: none;
 
   z-index: 8000;
-
-  transition:
-    opacity var(--transition),
-    visibility var(--transition);
 }
 
 
@@ -1752,16 +1357,11 @@ a:hover {
 
   justify-content: space-between;
 
-  min-height: 45px;
-
   margin-bottom: 20px;
 }
 
 
 .pr-mobile-drawer-title {
-
-  font-size: 15px;
-
   font-weight: 700;
 }
 
@@ -1778,14 +1378,6 @@ a:hover {
   background: transparent;
 
   color: var(--text);
-
-  font-size: 18px;
-}
-
-
-.pr-drawer-close:hover {
-
-  background: var(--surface-2);
 }
 
 
@@ -1814,8 +1406,6 @@ a:hover {
   border-radius: 9px;
 
   color: var(--text-soft);
-
-  font-size: 14px;
 }
 
 
@@ -1828,24 +1418,223 @@ a:hover {
 }
 
 
-.pr-mobile-link i {
+/* =========================================================
+   DESKTOP — FORCE SIDEBAR
+   ========================================================= */
 
-  width: 18px;
+@media (min-width: 901px) {
 
-  text-align: center;
+  .pr-sidebar {
+
+    display: block !important;
+
+    visibility: visible !important;
+
+    opacity: 1 !important;
+
+    transform: none !important;
+  }
+
+  .pr-menu-btn {
+
+    display: none !important;
+  }
+
+  .pr-header-nav {
+
+    display: flex !important;
+  }
+
+  .pr-main {
+
+    margin-left: var(--sidebar-width) !important;
+  }
+
+  .pr-footer {
+
+    margin-left: var(--sidebar-width) !important;
+  }
+
+  .pr-mobile-drawer,
+  .pr-drawer-overlay {
+
+    display: none !important;
+  }
 }
 
 
 /* =========================================================
-   22. AMOLED DARK MODE DETAILS
+   MOBILE — REMOVE DESKTOP SIDEBAR
    ========================================================= */
 
-html[data-theme="dark"] body,
-body.dark-theme {
+@media (max-width: 900px) {
 
-  background: #000000;
+  :root {
+
+    --header-height: 64px;
+  }
+
+  .pr-header {
+
+    height: 64px;
+
+    padding: 0 14px;
+  }
+
+  .pr-header-left {
+
+    width: auto;
+
+    min-width: 0;
+  }
+
+  .pr-menu-btn {
+
+    display: flex !important;
+  }
+
+  .pr-header-nav {
+
+    display: none !important;
+  }
+
+  .pr-header-actions {
+
+    width: auto;
+  }
+
+  .pr-sidebar {
+
+    display: none !important;
+  }
+
+  .pr-main {
+
+    margin-left: 0 !important;
+
+    padding-top: 64px;
+  }
+
+  .pr-footer {
+
+    margin-left: 0 !important;
+  }
+
+  .pr-logo-link {
+
+    width: 150px;
+  }
+
+  .pr-logo {
+
+    width: 150px;
+  }
+
+  .pr-home-hero {
+
+    padding: 60px 22px 55px;
+  }
+
+  .pr-trust-card {
+
+    margin: 0 22px 55px;
+
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+
+  .pr-tags {
+
+    padding: 0 22px;
+  }
+
+  .pr-home-section {
+
+    padding-left: 22px;
+
+    padding-right: 22px;
+  }
+
+  .pr-subject-grid {
+
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pr-grammar-grid,
+  .pr-explore-grid {
+
+    grid-template-columns: 1fr;
+  }
+
+  .pr-contact {
+
+    padding-left: 22px;
+
+    padding-right: 22px;
+  }
+
+  .pr-footer-top {
+
+    padding-left: 22px;
+
+    padding-right: 22px;
+
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pr-footer-bottom {
+
+    padding-left: 22px;
+
+    padding-right: 22px;
+  }
 }
 
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 560px) {
+
+  .pr-logo-link {
+    width: 140px;
+  }
+
+  .pr-logo {
+    width: 140px;
+  }
+
+  .pr-subject-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pr-footer-top {
+    grid-template-columns: 1fr;
+  }
+
+  .pr-home-hero h1 {
+    font-size: 40px;
+  }
+}
+
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+:focus-visible {
+
+  outline: 2px solid var(--text);
+
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   AMOLED DARK OVERRIDES
+   ========================================================= */
 
 html[data-theme="dark"] .pr-header,
 html[data-theme="dark"] .pr-sidebar,
@@ -1875,459 +1664,22 @@ body.dark-theme .pr-tools-item {
 
   background: #080808;
 
-  border-color: #222222;
+  border-color: #242424;
 }
 
 
-html[data-theme="dark"] .pr-sidebar-link:hover,
 html[data-theme="dark"] .pr-sidebar-link.active,
-html[data-theme="dark"] .pr-header-nav a:hover,
-html[data-theme="dark"] .pr-header-nav a.active,
-html[data-theme="dark"] .pr-header-icon:hover,
-html[data-theme="dark"] .pr-pills a:hover,
-body.dark-theme .pr-sidebar-link:hover,
+html[data-theme="dark"] .pr-sidebar-link:hover,
 body.dark-theme .pr-sidebar-link.active,
-body.dark-theme .pr-header-nav a:hover,
-body.dark-theme .pr-header-nav a.active,
-body.dark-theme .pr-header-icon:hover,
-body.dark-theme .pr-pills a:hover {
+body.dark-theme .pr-sidebar-link:hover {
 
   background: #111111;
 }
 
 
-html[data-theme="dark"] .pr-search-overlay,
-body.dark-theme .pr-search-overlay {
-
-  background: rgba(0,0,0,.96);
-}
-
-
-html[data-theme="dark"] .pr-search-panel,
-body.dark-theme .pr-search-panel {
-
-  background: #050505;
-
-  border-color: #222222;
-}
-
-
-html[data-theme="dark"] .pr-mobile-drawer,
-body.dark-theme .pr-mobile-drawer {
-
-  background: #000000;
-}
-
-
 /* =========================================================
-   23. IMPORTANT — ONLY LOGOS ARE INVERTED
+   REDUCE MOTION
    ========================================================= */
-
-.pr-logo,
-.pr-footer-logo {
-
-  filter: var(--logo-filter);
-}
-
-
-/* Other images are NOT inverted */
-
-
-/* =========================================================
-   24. RESPONSIVE — LARGE DESKTOP
-   ========================================================= */
-
-@media (min-width: 1200px) {
-
-  .pr-sidebar {
-
-    width: 250px;
-  }
-
-  .pr-main {
-
-    margin-left: 250px;
-  }
-
-  .pr-footer {
-
-    margin-left: 250px;
-  }
-
-  :root {
-
-    --sidebar-width: 250px;
-  }
-}
-
-
-/* =========================================================
-   25. RESPONSIVE — TABLET / SMALL DESKTOP
-   ========================================================= */
-
-@media (max-width: 1100px) {
-
-  .pr-header-nav {
-
-    gap: 0;
-  }
-
-  .pr-header-nav a {
-
-    padding: 0 9px;
-
-    font-size: 12px;
-  }
-
-  .pr-home-hero,
-  .pr-home-section,
-  .pr-contact {
-
-    padding-left: 35px;
-
-    padding-right: 35px;
-  }
-
-  .pr-trust-card {
-
-    margin-left: 35px;
-
-    margin-right: 35px;
-  }
-
-  .pr-tags {
-
-    padding-left: 35px;
-
-    padding-right: 35px;
-  }
-
-  .pr-subject-grid {
-
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .pr-footer-top {
-
-    padding-left: 35px;
-
-    padding-right: 35px;
-  }
-
-  .pr-footer-bottom {
-
-    padding-left: 35px;
-
-    padding-right: 35px;
-  }
-}
-
-
-/* =========================================================
-   26. RESPONSIVE — MOBILE
-   ========================================================= */
-
-@media (max-width: 900px) {
-
-  :root {
-
-    --header-height: 64px;
-
-    --sidebar-width: 0px;
-  }
-
-
-  /* Hide desktop menu */
-
-  .pr-sidebar {
-
-    display: none;
-  }
-
-
-  /* Show mobile menu button */
-
-  .pr-menu-btn {
-
-    display: flex;
-  }
-
-
-  /* Hide desktop nav */
-
-  .pr-header-nav {
-
-    display: none;
-  }
-
-
-  /* Header */
-
-  .pr-header {
-
-    height: 64px;
-
-    padding: 0 14px;
-
-    gap: 10px;
-  }
-
-
-  .pr-header-left {
-
-    min-width: 0;
-
-    gap: 8px;
-  }
-
-
-  .pr-logo-link {
-
-    width: 150px;
-
-    height: 42px;
-  }
-
-
-  .pr-logo {
-
-    width: 150px;
-
-    max-height: 40px;
-  }
-
-
-  .pr-header-actions {
-
-    min-width: auto;
-  }
-
-
-  .pr-header-icon {
-
-    width: 38px;
-
-    height: 38px;
-  }
-
-
-  /* Main */
-
-  .pr-main {
-
-    margin-left: 0;
-
-    padding-top: 64px;
-  }
-
-
-  /* Footer */
-
-  .pr-footer {
-
-    margin-left: 0;
-  }
-
-
-  .pr-home-hero {
-
-    padding: 65px 22px 55px;
-  }
-
-
-  .pr-home-hero h1 {
-
-    font-size: clamp(40px, 12vw, 58px);
-  }
-
-
-  .pr-hero-text {
-
-    font-size: 15px;
-  }
-
-
-  .pr-trust-card {
-
-    margin: 0 22px 55px;
-
-    padding: 23px;
-
-    grid-template-columns: 1fr;
-
-    gap: 28px;
-  }
-
-
-  .pr-trust-items {
-
-    grid-template-columns: 1fr;
-
-    gap: 15px;
-  }
-
-
-  .pr-tags {
-
-    padding: 0 22px;
-
-    margin-bottom: 55px;
-  }
-
-
-  .pr-home-section {
-
-    padding: 0 22px 65px;
-  }
-
-
-  .pr-subject-grid {
-
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-
-  .pr-grammar-grid,
-  .pr-explore-grid {
-
-    grid-template-columns: 1fr;
-  }
-
-
-  .pr-contact {
-
-    padding: 0 22px 75px;
-  }
-
-
-  .pr-footer-top {
-
-    padding: 45px 22px;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 35px 25px;
-  }
-
-
-  .pr-footer-bottom {
-
-    padding: 18px 22px;
-  }
-
-
-  .pr-search-overlay {
-
-    padding: 78px 12px 15px;
-  }
-
-
-  .pr-search-panel {
-
-    max-height: calc(100vh - 95px);
-  }
-
-
-  .pr-language-menu {
-
-    top: 57px;
-
-    right: 55px;
-  }
-}
-
-
-/* =========================================================
-   27. RESPONSIVE — SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 560px) {
-
-  .pr-home-hero {
-
-    padding-top: 52px;
-  }
-
-
-  .pr-home-hero h1 {
-
-    font-size: 39px;
-
-    letter-spacing: -.045em;
-  }
-
-
-  .pr-pills a {
-
-    min-height: 36px;
-
-    padding: 0 13px;
-  }
-
-
-  .pr-subject-grid {
-
-    grid-template-columns: 1fr;
-  }
-
-
-  .pr-subj-real,
-  .pr-subj-dummy {
-
-    min-height: 125px;
-  }
-
-
-  .pr-footer-top {
-
-    grid-template-columns: 1fr;
-  }
-
-
-  .pr-footer-about {
-
-    margin-bottom: 5px;
-  }
-
-
-  .pr-header-actions {
-
-    gap: 0;
-  }
-
-
-  .pr-header-icon {
-
-    width: 36px;
-
-    height: 36px;
-  }
-
-
-  .pr-logo-link {
-
-    width: 140px;
-  }
-
-
-  .pr-logo {
-
-    width: 140px;
-  }
-}
-
-
-/* =========================================================
-   28. ACCESSIBILITY
-   ========================================================= */
-
-:focus-visible {
-
-  outline: 2px solid var(--text);
-
-  outline-offset: 3px;
-}
-
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -2340,7 +1692,5 @@ body.dark-theme .pr-mobile-drawer {
     transition-duration: .01ms !important;
 
     animation-duration: .01ms !important;
-
-    animation-iteration-count: 1 !important;
   }
 }
