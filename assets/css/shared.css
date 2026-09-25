@@ -319,7 +319,7 @@ left:var(--sidebar);
   -webkit-backdrop-filter:blur(24px) saturate(140%);
   backdrop-filter:blur(24px) saturate(140%);
   border-right:1px solid var(--line);
-  padding:0 var(--s-5) var(--s-6);
+  padding:var(--s-4) var(--s-5) var(--s-6);
   overflow-y:auto;
   scrollbar-width:thin;
   scrollbar-color:var(--line-2) transparent;
