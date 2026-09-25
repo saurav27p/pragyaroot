@@ -1,186 +1,76 @@
 <header class="pr-header" id="siteHeader">
 
   <div class="pr-header-left">
-
-    <button
-      class="pr-menu-btn"
-      id="menuBtn"
-      type="button"
-      aria-label="Open menu"
-      aria-controls="mobileDrawer"
-      aria-expanded="false">
+    <button class="pr-menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
       <i class="fa-solid fa-bars"></i>
     </button>
 
-    <a
-      href="/"
-      class="pr-logo-link"
-      aria-label="PragyaRoot Home">
-
-      <img
-        src="https://blogger.googleusercontent.com/img/a/AVvXsEgVIBpNidrRIBvOIG6xuJvOsLRUB6DbUF7P0I4kipF1yLD9WPpUj-c5BwtlTBB-drIGQJi58ZF1-kqKeAAL0BlgyaKtOTgldphCdP2-H_C6EnC1gEs4soKlfO50jMuz3TCyHXKh5hwFmqNb6DVxZ2rrLjLOJjI0yhgKnRFMC6RMNTCmseU7L839vJoKMkIz=s1600"
-        alt="PragyaRoot"
-        class="pr-logo">
-
+    <a href="/" class="pr-logo-link" aria-label="PragyaRoot Home">
+      <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgVIBpNidrRIBvOIG6xuJvOsLRUB6DbUF7P0I4kipF1yLD9WPpUj-c5BwtlTBB-drIGQJi58ZF1-kqKeAAL0BlgyaKtOTgldphCdP2-H_C6EnC1gEs4soKlfO50jMuz3TCyHXK[...]
+        alt="PragyaRoot" class="pr-logo">
     </a>
-
   </div>
 
-
-  <nav
-    class="pr-header-nav"
-    aria-label="Main navigation">
-
+  <!-- Navigation is intentionally available from the sidebar/drawer only. -->
+  <nav class="pr-header-nav" aria-label="Main navigation" hidden>
     <a href="/">Home</a>
-
     <a href="/pages/nepali.html">Nepali</a>
-
     <a href="/pages/english.html">English</a>
-
     <a href="/pages/games.html">Games</a>
-
     <a href="/pages/about.html">About</a>
-
     <a href="/pages/contact.html">Contact</a>
-
   </nav>
 
-
   <div class="pr-header-actions">
-
-    <button
-      class="pr-header-icon"
-      id="searchBtn"
-      type="button"
-      aria-label="Search">
-
+    <button class="pr-header-icon" id="searchBtn" type="button" aria-label="Search">
       <i class="fa-solid fa-magnifying-glass"></i>
-
     </button>
-
-
-    <button
-      class="pr-header-icon"
-      id="languageBtn"
-      type="button"
-      aria-label="Language"
-      aria-expanded="false"
-      aria-controls="languageMenu">
-
+    <button class="pr-header-icon" id="languageBtn" type="button" aria-label="Language" aria-expanded="false" aria-controls="languageMenu">
       <i class="fa-solid fa-language"></i>
-
     </button>
-
-
-    <button
-      class="pr-header-icon"
-      id="themeToggle"
-      type="button"
-      aria-label="Toggle theme">
-
+    <button class="pr-header-icon" id="themeToggle" type="button" aria-label="Toggle theme">
       <i class="fa-solid fa-moon"></i>
-
     </button>
-
   </div>
-
 </header>
 
-
-<!-- =========================================
-     SEARCH OVERLAY
-========================================= -->
-
-<div
-  class="pr-search-overlay"
-  id="searchOverlay"
-  aria-hidden="true">
-
-  <div
-    class="pr-search-panel"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Search PragyaRoot">
-
+<div class="pr-search-overlay" id="searchOverlay" aria-hidden="true">
+  <div class="pr-search-panel" role="dialog" aria-modal="true" aria-label="Search PragyaRoot">
     <div class="pr-search-top">
-
       <div class="pr-search-input-wrap">
-
-        <i
-          class="fa-solid fa-magnifying-glass"
-          aria-hidden="true">
-        </i>
-
-        <input
-          type="search"
-          class="pr-search-input"
-          id="searchInput"
-          placeholder="Search PragyaRoot..."
-          autocomplete="off"
-          spellcheck="false"
-          aria-label="Search PragyaRoot">
-
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" class="pr-search-input" id="searchInput" placeholder="Search PragyaRoot..." autocomplete="off" spellcheck="false" aria-label="Search PragyaRoot">
       </div>
-
-
-      <button
-        class="pr-search-close"
-        id="searchClose"
-        type="button"
-        aria-label="Close search">
-
-        <i class="fa-solid fa-xmark"></i>
-
-      </button>
-
+      <button class="pr-search-close" id="searchClose" type="button" aria-label="Close search"><i class="fa-solid fa-xmark"></i></button>
     </div>
-
-
-    <div
-      class="pr-search-meta"
-      id="searchCount">
-
-      Start typing to search
-
-    </div>
-
-
-    <div
-      class="pr-search-results"
-      id="searchResults">
-    </div>
-
+    <div class="pr-search-meta" id="searchCount">Start typing to search</div>
+    <div class="pr-search-results" id="searchResults"></div>
   </div>
-
 </div>
 
-
-<!-- =========================================
-     LANGUAGE MENU
-========================================= -->
-
-<div
-  class="pr-language-menu"
-  id="languageMenu"
-  hidden>
-
-  <button
-    type="button"
-    class="pr-language-option active"
-    data-lang="en">
-
-    <span>English</span>
-    <i class="fa-solid fa-check"></i>
-
-  </button>
-
-  <button
-    type="button"
-    class="pr-language-option"
-    data-lang="ne">
-
-    <span>नेपाली</span>
-
-  </button>
-
+<div class="pr-language-menu" id="languageMenu" hidden>
+  <button type="button" class="pr-language-option active" data-lang="en"><span>English</span><i class="fa-solid fa-check"></i></button>
+  <button type="button" class="pr-language-option" data-lang="ne"><span>नेपाली</span></button>
 </div>
+
+<!-- Keep header controls above decorative/overlay layers and anchored at the far right. -->
+<style>
+  .pr-header { isolation: isolate; }
+  .pr-header-left, .pr-header-actions { position: relative; z-index: 2; }
+  .pr-header-actions { margin-left: auto; flex: 0 0 auto; }
+  .pr-header-nav[hidden] { display: none !important; }
+  .pr-search-overlay { pointer-events: none; }
+  .pr-search-overlay.open, .pr-search-overlay.search-open { pointer-events: auto; }
+  .pr-search-panel, .pr-search-overlay button, .pr-search-overlay input { pointer-events: auto; }
+  .pr-language-menu[hidden] { display: none !important; pointer-events: none; }
+  .pr-language-menu:not([hidden]) { pointer-events: auto; z-index: 3001; }
+  .pr-back-to-top { position: fixed !important; right: 22px !important; bottom: 22px !important; z-index: 2500 !important; pointer-events: none; cursor: pointer; }
+  .pr-back-to-top.is-visible { pointer-events: auto; }
+  @media (max-width: 768px) {
+    .pr-header { padding: 0 10px; }
+    .pr-header-left { min-width: 0; gap: 8px; }
+    .pr-logo-link, .pr-logo { width: 142px; }
+    .pr-header-actions { gap: 1px; }
+    .pr-header-icon, .pr-menu-btn { flex: 0 0 40px; }
+  }
+</style>
