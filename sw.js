@@ -1,16 +1,16 @@
 const CACHE = "pragyaroot-v1";
 
 const ASSETS = [
-  "/pragyaroot/",
-  "/pragyaroot/index.html",
-  "/pragyaroot/assets/css/shared.css",
-  "/pragyaroot/assets/js/shared.js",
-  "/pragyaroot/components/header.html",
-  "/pragyaroot/components/sidebar.html",
-  "/pragyaroot/components/drawer.html",
-  "/pragyaroot/components/search.html",
-  "/pragyaroot/components/footer.html",
-  "/pragyaroot/components/back-to-top.html"
+  "./",
+  "./index.html",
+  "./assets/css/shared.css",
+  "./assets/js/shared.js",
+  "./components/header.html",
+  "./components/sidebar.html",
+  "./components/drawer.html",
+  "./components/search.html",
+  "./components/footer.html",
+  "./components/back-to-top.html"
 ];
 
 self.addEventListener("install", function(event){
@@ -37,13 +37,23 @@ self.addEventListener("activate", function(event){
 });
 
 self.addEventListener("fetch", function(event){
-  if(event.request.method !== "GET") return;
-  if(!event.request.url.startsWith(self.location.origin)) return;
+  if (event.request.method !== "GET") return;
+  const url = new URL(event.request.url);
+  if (url.origin !== self.location.origin) return;
+
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      fetch(event.request).catch(function(){
+        return caches.match("./index.html");
+      })
+    );
+    return;
+  }
 
   event.respondWith(
     caches.match(event.request).then(function(cached){
-      const network = fetch(event.request).then(function(response){
-        if(response && response.status === 200 && response.type === "basic"){
+      return cached || fetch(event.request).then(function(response){
+        if (response && response.ok) {
           const copy = response.clone();
           caches.open(CACHE).then(function(cache){
             cache.put(event.request, copy);
@@ -53,7 +63,6 @@ self.addEventListener("fetch", function(event){
       }).catch(function(){
         return cached;
       });
-      return cached || network;
     })
   );
 });
