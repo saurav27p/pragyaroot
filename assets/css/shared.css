@@ -214,7 +214,9 @@ button:focus-visible{
 
 .pr-header{
   position:fixed;
-  inset:0 0 auto 0;
+  top:0;
+right:0;
+left:var(--sidebar);
   height:var(--header);
   z-index:1000;
   background:var(--surface);
@@ -312,7 +314,7 @@ button:focus-visible{
   top:0;
   bottom:0;
   width:var(--sidebar);
-  z-index:990;
+  z-index:1010;
   background:var(--surface);
   -webkit-backdrop-filter:blur(24px) saturate(140%);
   backdrop-filter:blur(24px) saturate(140%);
