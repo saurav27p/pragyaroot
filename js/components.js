@@ -81,12 +81,15 @@ document.addEventListener("DOMContentLoaded", async () => {
      DARK / LIGHT THEME
   ========================================= */
 
-  const themeToggle = document.getElementById("themeToggle");
+  const themeToggle =
+    document.getElementById("themeToggle");
 
   function updateThemeIcon() {
+
     if (!themeToggle) return;
 
-    const icon = themeToggle.querySelector("i");
+    const icon =
+      themeToggle.querySelector("i");
 
     if (!icon) return;
 
@@ -94,13 +97,20 @@ document.addEventListener("DOMContentLoaded", async () => {
       document.documentElement.classList.contains("dark");
 
     if (isDark) {
-      icon.className = "fa-solid fa-sun";
+
+      icon.className =
+        "fa-solid fa-sun";
+
       themeToggle.setAttribute(
         "aria-label",
         "Switch to light mode"
       );
+
     } else {
-      icon.className = "fa-solid fa-moon";
+
+      icon.className =
+        "fa-solid fa-moon";
+
       themeToggle.setAttribute(
         "aria-label",
         "Switch to dark mode"
@@ -118,20 +128,28 @@ document.addEventListener("DOMContentLoaded", async () => {
   updateThemeIcon();
 
   if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
 
-      document.documentElement.classList.toggle("dark");
+    themeToggle.addEventListener(
+      "click",
+      () => {
 
-      const isDark =
-        document.documentElement.classList.contains("dark");
+        document.documentElement.classList.toggle(
+          "dark"
+        );
 
-      localStorage.setItem(
-        "pragyaroot-theme",
-        isDark ? "dark" : "light"
-      );
+        const isDark =
+          document.documentElement.classList.contains(
+            "dark"
+          );
 
-      updateThemeIcon();
-    });
+        localStorage.setItem(
+          "pragyaroot-theme",
+          isDark ? "dark" : "light"
+        );
+
+        updateThemeIcon();
+      }
+    );
   }
 
 
@@ -196,7 +214,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const searchCount =
     document.getElementById("searchCount");
 
-
   let searchIndex = [];
 
 
@@ -232,7 +249,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         searchIndex.push({
           element: block,
-          text: text
+          text
         });
 
       });
@@ -241,8 +258,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function createExcerpt(text, query) {
 
-    const lowerText = text.toLowerCase();
-    const lowerQuery = query.toLowerCase();
+    const lowerText =
+      text.toLowerCase();
+
+    const lowerQuery =
+      query.toLowerCase();
 
     const matchIndex =
       lowerText.indexOf(lowerQuery);
@@ -253,13 +273,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const radius = 75;
 
-    let start =
-      Math.max(0, matchIndex - radius);
+    const start =
+      Math.max(
+        0,
+        matchIndex - radius
+      );
 
-    let end =
+    const end =
       Math.min(
         text.length,
-        matchIndex + query.length + radius
+        matchIndex +
+        query.length +
+        radius
       );
 
     let excerpt =
@@ -279,23 +304,31 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function highlightElement(element) {
 
-    element.classList.remove("pr-search-highlight");
+    element.classList.remove(
+      "pr-search-highlight"
+    );
 
     void element.offsetWidth;
 
-    element.classList.add("pr-search-highlight");
+    element.classList.add(
+      "pr-search-highlight"
+    );
 
     setTimeout(() => {
+
       element.classList.remove(
         "pr-search-highlight"
       );
+
     }, 1600);
   }
 
 
   function performSearch(query) {
 
-    if (!searchResults || !searchCount) return;
+    if (!searchResults || !searchCount) {
+      return;
+    }
 
     const cleanQuery =
       query.trim().toLowerCase();
@@ -375,24 +408,29 @@ document.addEventListener("DOMContentLoaded", async () => {
       result.appendChild(heading);
       result.appendChild(excerpt);
 
-      result.addEventListener("click", () => {
+      result.addEventListener(
+        "click",
+        () => {
 
-        closeSearch();
-
-        setTimeout(() => {
-
-          item.element.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-          });
+          closeSearch();
 
           setTimeout(() => {
-            highlightElement(item.element);
-          }, 500);
 
-        }, 120);
+            item.element.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
 
-      });
+            setTimeout(() => {
+              highlightElement(
+                item.element
+              );
+            }, 500);
+
+          }, 120);
+
+        }
+      );
 
       searchResults.appendChild(result);
 
@@ -410,6 +448,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       "search-open"
     );
 
+    searchOverlay.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
     document.body.classList.add(
       "search-active"
     );
@@ -418,8 +461,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       searchInput.value = "";
 
-      searchCount.textContent =
-        "Start typing to search";
+      if (searchCount) {
+        searchCount.textContent =
+          "Start typing to search";
+      }
 
       setTimeout(() => {
         searchInput.focus();
@@ -434,6 +479,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     searchOverlay.classList.remove(
       "search-open"
+    );
+
+    searchOverlay.setAttribute(
+      "aria-hidden",
+      "true"
     );
 
     document.body.classList.remove(
@@ -467,10 +517,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         clearTimeout(searchTimer);
 
-        searchTimer = setTimeout(() => {
-          performSearch(event.target.value);
-        }, 40);
+        searchTimer =
+          setTimeout(() => {
 
+            performSearch(
+              event.target.value
+            );
+
+          }, 40);
       }
     );
   }
@@ -493,22 +547,133 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
 
-  document.addEventListener(
-    "keydown",
-    event => {
+  /* =========================================
+     LANGUAGE MENU
+  ========================================= */
 
-      if (event.key === "Escape") {
+  const languageBtn =
+    document.getElementById("languageBtn");
 
-        if (
-          searchOverlay &&
-          searchOverlay.classList.contains(
-            "search-open"
-          )
-        ) {
-          closeSearch();
+  const languageMenu =
+    document.getElementById("languageMenu");
+
+  const languageOptions =
+    document.querySelectorAll(
+      ".pr-language-option"
+    );
+
+
+  function closeLanguageMenu() {
+
+    if (!languageMenu) return;
+
+    languageMenu.hidden = true;
+
+    if (languageBtn) {
+      languageBtn.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+    }
+  }
+
+
+  function openLanguageMenu() {
+
+    if (!languageMenu) return;
+
+    languageMenu.hidden = false;
+
+    if (languageBtn) {
+      languageBtn.setAttribute(
+        "aria-expanded",
+        "true"
+      );
+    }
+  }
+
+
+  if (languageBtn) {
+
+    languageBtn.addEventListener(
+      "click",
+      event => {
+
+        event.stopPropagation();
+
+        if (!languageMenu) return;
+
+        if (languageMenu.hidden) {
+          openLanguageMenu();
+        } else {
+          closeLanguageMenu();
         }
 
-        closeDrawer();
+      }
+    );
+  }
+
+
+  languageOptions.forEach(option => {
+
+    option.addEventListener(
+      "click",
+      () => {
+
+        const selectedLanguage =
+          option.dataset.lang;
+
+        localStorage.setItem(
+          "pragyaroot-language",
+          selectedLanguage
+        );
+
+        languageOptions.forEach(item => {
+          item.classList.remove("active");
+
+          const check =
+            item.querySelector("i");
+
+          if (check) {
+            check.remove();
+          }
+        });
+
+        option.classList.add("active");
+
+        const check =
+          document.createElement("i");
+
+        check.className =
+          "fa-solid fa-check";
+
+        option.appendChild(check);
+
+        closeLanguageMenu();
+
+        /*
+         * The language selector is ready for
+         * full Nepali/English translations.
+         * We keep the page content unchanged
+         * until translated content is added.
+         */
+
+      }
+    );
+  });
+
+
+  document.addEventListener(
+    "click",
+    event => {
+
+      if (
+        languageMenu &&
+        !languageMenu.hidden &&
+        !languageMenu.contains(event.target) &&
+        event.target !== languageBtn
+      ) {
+        closeLanguageMenu();
       }
 
     }
@@ -637,5 +802,54 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     );
   }
+
+
+  /* =========================================
+     ACTIVE NAVIGATION
+  ========================================= */
+
+  const currentPath =
+    window.location.pathname
+      .replace(/\/+$/, "") || "/";
+
+
+  document.querySelectorAll(
+    ".pr-header-nav a, .pr-sidebar-link, .pr-mobile-link"
+  ).forEach(link => {
+
+    const linkPath =
+      new URL(
+        link.href,
+        window.location.href
+      ).pathname
+        .replace(/\/+$/, "") || "/";
+
+    link.classList.remove("active");
+
+    if (linkPath === currentPath) {
+      link.classList.add("active");
+    }
+
+  });
+
+
+  /* =========================================
+     ESCAPE KEY
+  ========================================= */
+
+  document.addEventListener(
+    "keydown",
+    event => {
+
+      if (event.key !== "Escape") {
+        return;
+      }
+
+      closeSearch();
+      closeLanguageMenu();
+      closeDrawer();
+
+    }
+  );
 
 });
