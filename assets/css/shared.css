@@ -1593,3 +1593,35 @@ html.dark #pragyaroot-root .fmsg.er{
   .pr-sidebar{display:block}
   .pr-menu-btn{display:none}
 }
+.pr-sidebar-logo{
+  display:none;
+}
+
+@media (min-width:769px){
+  .pr-sidebar-logo{
+    display:flex;
+    align-items:center;
+    padding:0 var(--s-3);
+    margin-bottom:var(--s-6);
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    user-select:none;
+    -webkit-user-drag:none;
+  }
+
+  .pr-sidebar-logo img{
+    width:140px;
+    height:auto;
+    filter:var(--logo-filter);
+    pointer-events:none;
+  }
+
+  .pr-header-logo{
+    display:none;
+  }
+
+  .pr-header-inner{
+    padding:0 var(--s-5);
+    justify-content:flex-end;
+  }
+}
