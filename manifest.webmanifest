@@ -1,9 +1,10 @@
 {
   "name": "PragyaRoot",
   "short_name": "PragyaRoot",
+  "id": "./",
   "description": "Class 10 notes, exercise solutions, grammar and learning games for SEE Nepal.",
-  "start_url": "/pragyaroot/index.html",
-  "scope": "/pragyaroot/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#FAFAFA",
@@ -13,28 +14,28 @@
   "categories": ["education", "books", "productivity"],
   "icons": [
     {
-      "src": "/pragyaroot/favicon.svg",
+      "src": "./favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "/pragyaroot/apple-touch-icon.png",
+      "src": "./apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/pragyaroot/icon-192.png",
+      "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "/pragyaroot/icon-512.png",
+      "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     }
   ]
 }
