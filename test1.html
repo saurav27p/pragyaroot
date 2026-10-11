@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#fafaf7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#f7f6f1" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0a0a0c" media="(prefers-color-scheme: dark)">
 
-<title>PragyaRoot. Class 10 notes and solutions for Nepal SEE.</title>
-<meta name="description" content="Aligned to the CDC curriculum for Nepal SEE. Complete notes, solutions, and grammar drills. Six subjects. One place. Free forever.">
+<title>PragyaRoot · Class 10 notes & solutions for Nepal SEE</title>
+<meta name="description" content="Aligned to the CDC curriculum for Nepal SEE. Complete notes, worked solutions, and grammar drills. Six subjects. One place. Free forever.">
 <meta name="author" content="PragyaRoot">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://pragyaroot.github.io/pragyaroot/">
@@ -22,7 +22,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PragyaRoot">
-<meta property="og:title" content="PragyaRoot. Study, refined.">
+<meta property="og:title" content="PragyaRoot · Study, refined.">
 <meta property="og:description" content="Class 10 study resources for Nepal SEE. Notes, solutions, grammar. One place. Zero noise.">
 <meta property="og:url" content="https://pragyaroot.github.io/pragyaroot/">
 <meta property="og:image" content="https://pragyaroot.github.io/pragyaroot/icon-512.png">
@@ -32,7 +32,7 @@
 <meta property="og:locale" content="en_NP">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="PragyaRoot. Study, refined.">
+<meta name="twitter:title" content="PragyaRoot · Study, refined.">
 <meta name="twitter:description" content="Class 10 study resources for Nepal SEE.">
 <meta name="twitter:image" content="https://pragyaroot.github.io/pragyaroot/icon-512.png">
 
@@ -42,10 +42,10 @@
 {"@type":"WebSite","@id":"https://pragyaroot.github.io/pragyaroot/#website","url":"https://pragyaroot.github.io/pragyaroot/","name":"PragyaRoot","publisher":{"@id":"https://pragyaroot.github.io/pragyaroot/#organization"},"inLanguage":"en-NP"},
 {"@type":"EducationalOrganization","@id":"https://pragyaroot.github.io/pragyaroot/#edu","name":"PragyaRoot","url":"https://pragyaroot.github.io/pragyaroot/","description":"Free Class 10 study resources for Nepal SEE students.","areaServed":{"@type":"Country","name":"Nepal"},"audience":{"@type":"EducationalAudience","educationalRole":"student"}},
 {"@type":"FAQPage","@id":"https://pragyaroot.github.io/pragyaroot/#faq","mainEntity":[
-{"@type":"Question","name":"Is PragyaRoot free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every note, solution, and drill is free forever. No accounts. No paywalls."}},
+{"@type":"Question","name":"Is PragyaRoot free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every note, solution, and drill is free forever. No accounts. No paywalls. No ads."}},
 {"@type":"Question","name":"Which subjects are covered?","acceptedAnswer":{"@type":"Answer","text":"Nepali, English, Science, Mathematics, Social Studies, and Computer Science for Class 10."}},
-{"@type":"Question","name":"Is the content aligned with the CDC syllabus?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every chapter is aligned with the Curriculum Development Centre syllabus for Class 10 in Nepal."}},
-{"@type":"Question","name":"Can I use PragyaRoot on my phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. PragyaRoot is built mobile first and supports light and dark mode."}}
+{"@type":"Question","name":"Is the content aligned with the CDC syllabus?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every chapter is aligned with the Curriculum Development Centre syllabus for Class 10 in Nepal, and rechecked when the syllabus changes."}},
+{"@type":"Question","name":"Can I print chapters or use PragyaRoot offline?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every chapter has a print stylesheet that turns the page into a clean study worksheet. PragyaRoot is also installable as an app and works offline for pages you have already visited."}}
 ]}
 ]}
 </script>
@@ -61,7 +61,10 @@
     root.style.colorScheme = saved;
   }
   try {
-    var MIN_MS = 1700;
+    var firstVisit = true;
+    try { firstVisit = !sessionStorage.getItem('pragyaroot-seen'); } catch(e){}
+    var MIN_MS = firstVisit ? 1750 : 0;
+    try { sessionStorage.setItem('pragyaroot-seen', '1'); } catch(e){}
     var paintedAt = 0;
     requestAnimationFrame(function(){ paintedAt = performance.now(); });
     var reveal = function(){
@@ -70,13 +73,13 @@
     };
     if (document.readyState === 'complete') reveal();
     else addEventListener('load', reveal, { once: true });
-    setTimeout(function(){ root.setAttribute('data-loaded', ''); }, 4000);
+    setTimeout(function(){ root.setAttribute('data-loaded', ''); }, MIN_MS + 2500);
   } catch (e) { root.setAttribute('data-loaded', ''); }
 })();
 </script>
 
 <style>
-@layer reset, tokens, base, layout, components, motion;
+@layer reset, tokens, base, layout, components, motion, print;
 
 @layer reset {
   *,*::before,*::after{ box-sizing:border-box; }
@@ -89,39 +92,50 @@
   a{ color:inherit; text-decoration:none; }
   :focus{ outline:none; }
   :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:6px; }
-  ::selection{ background:var(--accent-50); color:var(--accent-700); }
+  ::selection{ background:var(--accent-100); color:var(--accent-800); }
 }
 
 @layer tokens {
   :root{
-    --bg:#fafaf7;
+    /* ── Base paper (light) ─────────────────────────── */
+    --bg:#f7f6f1;
     --surface:#ffffff;
-    --surface-2:#f2f2ee;
-    --surface-3:#e7e7e2;
+    --surface-2:#f1f0ea;
+    --surface-3:#e6e4dc;
     --text:#0a0a0c;
-    --muted:#57575c;
-    --muted-2:#82828a;
-    --line:#e3e3de;
-    --line-2:#cfcfc8;
+    --muted:#54545a;
+    --muted-2:#8a8a92;
+    --line:#e4e2da;
+    --line-2:#cfcdc4;
     --ink:#0a0a0c;
-    --paper:#fafaf7;
+    --paper:#f7f6f1;
     --error:#b3261e;
 
-    --accent-50:#eef2ff;
-    --accent-100:#e0e7ff;
-    --accent-300:#a5b4fc;
-    --accent-400:#818cf8;
-    --accent-500:#6366f1;
-    --accent-600:#4f46e5;
-    --accent-700:#4338ca;
+    /* ── Accent: deep teal (print-safe, photocopy-safe) ── */
+    --accent-50:  #e6f2f2;
+    --accent-100: #c2e0e0;
+    --accent-300: #6db1b0;
+    --accent-400: #3d8a8a;
+    --accent-500: #0E5C63;   /* ★ the accent */
+    --accent-600: #0a4a50;
+    --accent-700: #073a3f;
+    --accent-800: #052a2e;
 
     --accent:var(--accent-500);
     --accent-soft:var(--accent-50);
     --accent-contrast:#ffffff;
     --logo:var(--ink);
 
-    --mark-bg:#e0e7ff;
-    --mark-ink:#312e81;
+    --mark-bg:#c2e0e0;
+    --mark-ink:#073a3f;
+
+    /* ── Subject family (cool, print-safe) ──────────── */
+    --sub-nepali:#0E5C63;
+    --sub-english:#1E3A8A;
+    --sub-science:#14532D;
+    --sub-math:#334155;
+    --sub-social:#6B2D5C;
+    --sub-computer:#312E81;
 
     --header:60px;
     --maxw:1280px;
@@ -135,16 +149,15 @@
     --ease:cubic-bezier(.22,1,.36,1);
     --ease-enter:cubic-bezier(.16,1,.3,1);
     --ease-out:cubic-bezier(.4,0,.2,1);
-    --ease-curtain:cubic-bezier(.76,0,.24,1);
     --dur-1:150ms;
     --dur-2:280ms;
 
     --shadow-1:0 1px 2px rgba(10,10,12,.04), 0 6px 18px rgba(10,10,12,.05);
     --shadow-2:0 2px 6px rgba(10,10,12,.06), 0 18px 44px rgba(10,10,12,.10);
     --shadow-3:0 4px 14px rgba(10,10,12,.08), 0 32px 80px rgba(10,10,12,.14);
-    --shadow-accent:0 8px 24px color-mix(in srgb, var(--accent) 18%, transparent);
+    --shadow-accent:0 8px 24px color-mix(in srgb, var(--accent) 22%, transparent);
 
-    --grain:.025;
+    --grain:.022;
 
     --fs-display:clamp(40px, 7.5vw, 88px);
     --fs-h2:clamp(24px, 3vw, 40px);
@@ -154,45 +167,58 @@
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
       --bg:#0a0a0c; --surface:#111114; --surface-2:#18181c; --surface-3:#212127;
-      --text:#f5f5f2; --muted:#a5a5ab; --muted-2:#7c7c84;
+      --text:#f5f5f2; --muted:#a8a8af; --muted-2:#9a9aa2;
       --line:#1e1e22; --line-2:#2b2b31;
       --ink:#f5f5f2; --paper:#0a0a0c; --error:#f2b8b5;
-      --accent-50:#1e1b4b; --accent-100:#312e81; --accent-300:#4f46e5;
-      --accent-400:#818cf8; --accent-500:#a5b4fc; --accent-600:#c7d2fe; --accent-700:#e0e7ff;
-      --accent:var(--accent-400); --accent-soft:var(--accent-50); --accent-contrast:#0a0a0c;
+      --accent-50:#0a2e30; --accent-100:#0f3b3e; --accent-300:#2e7e7c;
+      --accent-400:#4DB6B0; --accent-500:#4DB6B0; --accent-600:#6BC8C2;
+      --accent-700:#8CD9D3; --accent-800:#b5e8e4;
+      --accent:var(--accent-500); --accent-soft:var(--accent-50); --accent-contrast:#0a0a0c;
       --logo:#f5f5f2;
-      --mark-bg:#1e1b4b; --mark-ink:#c7d2fe;
+      --mark-bg:#0f3b3e; --mark-ink:#8CD9D3;
       --shadow-1:0 1px 2px rgba(0,0,0,.5), 0 6px 18px rgba(0,0,0,.6);
       --shadow-2:0 2px 6px rgba(0,0,0,.6), 0 18px 44px rgba(0,0,0,.75);
       --shadow-3:0 4px 14px rgba(0,0,0,.7), 0 32px 80px rgba(0,0,0,.85);
-      --grain:.04;
+      --grain:.035;
+      --sub-nepali:#4DB6B0;
+      --sub-english:#93a7f5;
+      --sub-science:#6cc08a;
+      --sub-math:#a8b4c5;
+      --sub-social:#d38ac0;
+      --sub-computer:#a5b4fc;
     }
   }
 
   html[data-theme="light"]{
-    --bg:#fafaf7; --surface:#ffffff; --surface-2:#f2f2ee; --surface-3:#e7e7e2;
-    --text:#0a0a0c; --muted:#57575c; --muted-2:#82828a;
-    --line:#e3e3de; --line-2:#cfcfc8;
-    --ink:#0a0a0c; --paper:#fafaf7; --error:#b3261e;
-    --accent-50:#eef2ff; --accent-100:#e0e7ff; --accent-300:#a5b4fc;
-    --accent-400:#818cf8; --accent-500:#6366f1; --accent-600:#4f46e5; --accent-700:#4338ca;
+    --bg:#f7f6f1; --surface:#ffffff; --surface-2:#f1f0ea; --surface-3:#e6e4dc;
+    --text:#0a0a0c; --muted:#54545a; --muted-2:#8a8a92;
+    --line:#e4e2da; --line-2:#cfcdc4;
+    --ink:#0a0a0c; --paper:#f7f6f1; --error:#b3261e;
+    --accent-50:#e6f2f2; --accent-100:#c2e0e0; --accent-300:#6db1b0;
+    --accent-400:#3d8a8a; --accent-500:#0E5C63; --accent-600:#0a4a50;
+    --accent-700:#073a3f; --accent-800:#052a2e;
     --accent:var(--accent-500); --accent-soft:var(--accent-50); --accent-contrast:#ffffff;
     --logo:#0a0a0c;
-    --mark-bg:#e0e7ff; --mark-ink:#312e81;
-    --grain:.025;
+    --mark-bg:#c2e0e0; --mark-ink:#073a3f;
+    --grain:.022;
+    --sub-nepali:#0E5C63; --sub-english:#1E3A8A; --sub-science:#14532D;
+    --sub-math:#334155; --sub-social:#6B2D5C; --sub-computer:#312E81;
   }
 
   html[data-theme="dark"]{
     --bg:#0a0a0c; --surface:#111114; --surface-2:#18181c; --surface-3:#212127;
-    --text:#f5f5f2; --muted:#a5a5ab; --muted-2:#7c7c84;
+    --text:#f5f5f2; --muted:#a8a8af; --muted-2:#9a9aa2;
     --line:#1e1e22; --line-2:#2b2b31;
     --ink:#f5f5f2; --paper:#0a0a0c; --error:#f2b8b5;
-    --accent-50:#1e1b4b; --accent-100:#312e81; --accent-300:#4f46e5;
-    --accent-400:#818cf8; --accent-500:#a5b4fc; --accent-600:#c7d2fe; --accent-700:#e0e7ff;
-    --accent:var(--accent-400); --accent-soft:var(--accent-50); --accent-contrast:#0a0a0c;
+    --accent-50:#0a2e30; --accent-100:#0f3b3e; --accent-300:#2e7e7c;
+    --accent-400:#4DB6B0; --accent-500:#4DB6B0; --accent-600:#6BC8C2;
+    --accent-700:#8CD9D3; --accent-800:#b5e8e4;
+    --accent:var(--accent-500); --accent-soft:var(--accent-50); --accent-contrast:#0a0a0c;
     --logo:#f5f5f2;
-    --mark-bg:#1e1b4b; --mark-ink:#c7d2fe;
-    --grain:.04;
+    --mark-bg:#0f3b3e; --mark-ink:#8CD9D3;
+    --grain:.035;
+    --sub-nepali:#4DB6B0; --sub-english:#93a7f5; --sub-science:#6cc08a;
+    --sub-math:#a8b4c5; --sub-social:#d38ac0; --sub-computer:#a5b4fc;
   }
 }
 
@@ -337,8 +363,10 @@
     width:30px; height:30px;
     display:block;
     flex-shrink:0;
-    color:var(--logo);
+    color:var(--accent);
+    transition:color var(--dur-2) ease;
   }
+  html:not([data-loaded]) .brand-lockup__mark{ color:var(--logo); }
   .brand-lockup__mark svg{ width:100%; height:100%; display:block; }
   .brand-lockup__mark svg path{ fill:currentColor; }
   .brand-lockup__name{ display:flex; flex-direction:column; line-height:1; gap:2px; min-width:0; }
@@ -606,6 +634,7 @@
     gap:10px;
   }
   .subject-card{
+    --sub:var(--accent);
     grid-column:span 2;
     display:flex;
     flex-direction:column;
@@ -622,17 +651,24 @@
     contain:layout style paint;
     min-height:180px;
   }
+  .subject-card[data-subject="nepali"]{ --sub:var(--sub-nepali); }
+  .subject-card[data-subject="english"]{ --sub:var(--sub-english); }
+  .subject-card[data-subject="science"]{ --sub:var(--sub-science); }
+  .subject-card[data-subject="math"]{ --sub:var(--sub-math); }
+  .subject-card[data-subject="social"]{ --sub:var(--sub-social); }
+  .subject-card[data-subject="computer"]{ --sub:var(--sub-computer); }
+
   .subject-card::after{
     content:"";
     position:absolute;
     left:0; right:0; bottom:0;
     height:2px;
-    background:var(--accent);
+    background:var(--sub);
     transform:scaleX(0);
     transform-origin:left center;
     transition:transform 340ms var(--ease-enter);
   }
-  .subject-card:hover{ border-color:var(--text); transform:translateY(-2px); box-shadow:var(--shadow-1); }
+  .subject-card:hover{ border-color:var(--sub); transform:translateY(-2px); box-shadow:var(--shadow-1); }
   .subject-card:hover::after{ transform:scaleX(1); }
   .subject-card[aria-disabled="true"]{ opacity:.75; }
   .subject-card[aria-disabled="true"]:hover{ transform:none; border-color:var(--line); box-shadow:none; }
@@ -649,21 +685,28 @@
     width:38px; height:38px;
     display:flex; align-items:center; justify-content:center;
     border-radius:10px;
-    background:var(--surface-2);
-    border:1px solid var(--line);
-    color:var(--text);
+    background:color-mix(in srgb, var(--sub) 10%, var(--surface-2));
+    border:1px solid color-mix(in srgb, var(--sub) 22%, transparent);
+    color:var(--sub);
     flex-shrink:0;
     transition:background-color var(--dur-2) ease, color var(--dur-2) ease, border-color var(--dur-2) ease, transform 380ms var(--ease);
   }
   .subject-card__mark svg{ width:18px; height:18px; }
   .subject-card:hover .subject-card__mark{
-    background:var(--accent);
-    color:var(--accent-contrast);
-    border-color:var(--accent);
+    background:var(--sub);
+    color:#fff;
+    border-color:var(--sub);
     transform:rotate(-8deg);
   }
+  html[data-theme="dark"] .subject-card:hover .subject-card__mark{ color:#0a0a0c; }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .subject-card:hover .subject-card__mark{ color:#0a0a0c; }
+  }
   .subject-card[aria-disabled="true"]:hover .subject-card__mark{
-    background:var(--surface-2); color:var(--text); border-color:var(--line); transform:none;
+    background:color-mix(in srgb, var(--sub) 10%, var(--surface-2));
+    color:var(--sub);
+    border-color:color-mix(in srgb, var(--sub) 22%, transparent);
+    transform:none;
   }
   .subject-card__badge{
     display:inline-flex; align-items:center; gap:5px;
@@ -678,19 +721,19 @@
     white-space:nowrap;
   }
   .subject-card__badge[data-status="live"]{
-    background:var(--accent-50);
-    border-color:var(--accent-100);
-    color:var(--accent-700);
+    background:color-mix(in srgb, var(--sub) 10%, var(--surface));
+    border-color:color-mix(in srgb, var(--sub) 25%, transparent);
+    color:var(--sub);
   }
   .subject-card__badge[data-status="live"] .dot{
     width:5px; height:5px;
-    background:var(--accent);
+    background:var(--sub);
     border-radius:50%;
     position:relative;
   }
   .subject-card__badge[data-status="live"] .dot::after{
     content:""; position:absolute; inset:-3px;
-    border:1px solid var(--accent);
+    border:1px solid var(--sub);
     border-radius:50%;
     animation:pr-pulse 2.4s var(--ease) infinite;
   }
@@ -987,7 +1030,7 @@
     background:#111114;
     border-bottom:1px solid #1e1e22;
     font-size:10.5px;
-    color:#7c7c84;
+    color:#8a8a92;
     letter-spacing:-0.005em;
   }
   .terminal__dot{
@@ -1013,8 +1056,8 @@
     word-break:break-word;
   }
   .code-prompt{ color:#f5f5f2; display:block; }
-  .code-muted{ color:#57575c; display:block; }
-  .code-success{ color:#a5b4fc; display:block; }
+  .code-muted{ color:#8a8a92; display:block; }
+  .code-success{ color:#6BC8C2; display:block; }
   @media (max-width:720px){
     .quickstart-block{ grid-template-columns:1fr; gap:14px; }
   }
@@ -1063,7 +1106,7 @@
   .alias-selector__detail code{
     font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size:12px;
-    color:var(--accent-700);
+    color:var(--accent-800);
     background:var(--surface);
     border:1px solid var(--accent-100);
     padding:3px 8px;
@@ -1121,7 +1164,7 @@
   .card code{
     font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size:11px;
-    color:var(--accent-700);
+    color:var(--accent-800);
     background:var(--accent-50);
     border:1px solid var(--accent-100);
     padding:5px 9px;
@@ -1213,7 +1256,7 @@
       font-size:9.5px;
       text-transform:uppercase;
       letter-spacing:0.14em;
-      color:var(--accent-700);
+      color:var(--accent-800);
       font-weight:600;
       padding:2px 6px;
       background:var(--accent-50);
@@ -1241,13 +1284,13 @@
   .faq summary::after{
     content:"";
     width:12px; height:12px;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236366f1' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E");
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230E5C63' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E");
     background-size:contain; background-repeat:no-repeat;
     flex-shrink:0;
     transition:transform var(--dur-2) var(--ease);
   }
   html[data-theme="dark"] .faq summary::after{
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23818cf8' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E");
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234DB6B0' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E");
   }
   .faq details[open] summary::after{ transform:rotate(45deg); }
   .faq .answer{
@@ -1411,6 +1454,54 @@
     .pr-line{ background:CanvasText; }
   }
 }
+
+/* ────────────────────────────────────────────────
+   PRINT — turns every page into a study worksheet
+   ──────────────────────────────────────────────── */
+@layer print {
+  @media print {
+    :root {
+      --bg:#ffffff; --surface:#ffffff; --surface-2:#ffffff; --surface-3:#ffffff;
+      --text:#000000; --ink:#000000; --paper:#ffffff;
+      --muted:#333333; --muted-2:#555555;
+      --line:#bbbbbb; --line-2:#999999;
+      --accent:#0E5C63; --accent-soft:#e6f2f2; --accent-contrast:#ffffff;
+      --grain:0;
+    }
+    html, body{ background:#fff !important; color:#000 !important; }
+    body::after{ display:none !important; }
+    .pr-loader, .site-header, .scroll-progress, .skip-link,
+    .hero-actions, .closing-cta .hero-actions,
+    .viz, .quickstart-block .terminal,
+    .scroll-progress, .icon-button, .button { display:none !important; }
+    main{ padding-top:0 !important; }
+    .wrap{ max-width:none; padding:0 12mm; }
+    section{ padding:12mm 0 6mm !important; break-inside:avoid; }
+    .section-head{ border-color:#000; margin-bottom:6mm; }
+    .section-title{ font-size:22pt; }
+    .display{ font-size:32pt; }
+    .lead{ font-size:11pt; }
+    .metrics-strip, .subject-bento, .promise-grid, .strategy-grid, .why-ledger{
+      border-color:#000 !important;
+    }
+    .metric, .subject-card, .card, .why-ledger__row{
+      border-color:#999 !important;
+      background:#fff !important;
+      box-shadow:none !important;
+      break-inside:avoid;
+    }
+    .subject-card{ min-height:auto; }
+    .subject-card::after, .subject-card__badge[data-status="live"] .dot::after { display:none; }
+    .subject-card__mark{ border:1px solid #000; color:#000; }
+    a{ color:#000; text-decoration:none; }
+    a[href]::after{ content:" (" attr(href) ")"; font-size:9pt; color:#555; }
+    .brand-lockup a::after, .footer-column a::after { content:""; }
+    footer{ border-top:1px solid #000; margin-top:8mm; }
+    .faq details{ break-inside:avoid; }
+    .faq details[open] .answer,
+    .faq details > .answer { display:block !important; }
+  }
+}
 </style>
 </head>
 <body>
@@ -1434,7 +1525,6 @@
 
 <header class="site-header" id="siteHeader" data-scrolled="false" role="banner">
   <div class="inner">
-
     <a class="brand-lockup" href="/pragyaroot/" aria-label="PragyaRoot home">
       <span class="brand-lockup__mark" aria-hidden="true">
         <svg viewBox="0 0 1536 1536" xmlns="http://www.w3.org/2000/svg">
@@ -1511,7 +1601,7 @@
         </span>
         <span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-          Mobile first
+          Print-ready
         </span>
         <span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
@@ -1565,7 +1655,7 @@
 
       <div class="subject-bento">
 
-        <a class="subject-card subject-card--wide" href="/pragyaroot/nepali/">
+        <a class="subject-card subject-card--wide" data-subject="nepali" href="/pragyaroot/nepali/">
           <div class="subject-card__head">
             <span class="subject-card__mark" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5h7.5a2.5 2.5 0 0 1 2.5 2.5v11a2 2 0 0 0-2-2H2z"/><path d="M22 5.5h-7.5A2.5 2.5 0 0 0 12 8v11a2 2 0 0 1 2-2h8z"/></svg>
@@ -1585,7 +1675,7 @@
           </div>
         </a>
 
-        <a class="subject-card subject-card--wide" href="/pragyaroot/english/">
+        <a class="subject-card subject-card--wide" data-subject="english" href="/pragyaroot/english/">
           <div class="subject-card__head">
             <span class="subject-card__mark" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>
@@ -1605,7 +1695,7 @@
           </div>
         </a>
 
-        <div class="subject-card" aria-disabled="true">
+        <div class="subject-card" data-subject="science" aria-disabled="true">
           <div class="subject-card__head">
             <span class="subject-card__mark" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v5.5L5.5 17a3 3 0 0 0 2.7 4.4h7.6A3 3 0 0 0 18.5 17L14 8.5V3"/><path d="M7 14h10"/></svg>
@@ -1618,7 +1708,7 @@
           </div>
         </div>
 
-        <div class="subject-card" aria-disabled="true">
+        <div class="subject-card" data-subject="math" aria-disabled="true">
           <div class="subject-card__head">
             <span class="subject-card__mark" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6v6H4z"/><path d="M14 4h6v6h-6z"/><path d="M4 14h6v6H4z"/><path d="M14 14l6 6"/><path d="M20 14l-6 6"/></svg>
@@ -1631,7 +1721,7 @@
           </div>
         </div>
 
-        <div class="subject-card" aria-disabled="true">
+        <div class="subject-card" data-subject="social" aria-disabled="true">
           <div class="subject-card__head">
             <span class="subject-card__mark" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5"/><path d="M14 19c0-2 2-3.5 4-3.5 2.5 0 4 1.5 4 3.5"/></svg>
@@ -1644,7 +1734,7 @@
           </div>
         </div>
 
-        <div class="subject-card" aria-disabled="true">
+        <div class="subject-card" data-subject="computer" aria-disabled="true">
           <div class="subject-card__head">
             <span class="subject-card__mark" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9l-3 3 3 3"/><path d="M16 9l3 3-3 3"/><path d="M13 7l-2 10"/></svg>
@@ -1695,7 +1785,7 @@
               <span class="viz-card__index" aria-hidden="true">01</span>
             </div>
             <p>Every note, every solution, every drill. No accounts. No paywalls. No tracking beyond a page view count.</p>
-            <p class="viz-card__stat">Cost <b>$0</b> every student, every year</p>
+            <p class="viz-card__stat">Cost <b>Rs 0</b> — every student, every year</p>
           </div>
         </article>
 
@@ -1738,24 +1828,24 @@
                 <path d="M2 50 C32 50 28 50 58 50"/>
                 <path d="M2 85 C32 85 28 50 58 50"/>
               </svg>
-              <span class="viz-node viz-node--accent">One page</span>
+              <span class="viz-node viz-node--accent">Print &amp; go</span>
             </div>
           </div>
           <div class="viz-card__body">
             <div class="viz-card__head">
               <div class="viz-card__lead">
                 <span class="viz-card__icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
                 </span>
                 <div>
                   <p class="viz-card__eyebrow">Commitment</p>
-                  <h3>No noise</h3>
+                  <h3>Print-ready pages</h3>
                 </div>
               </div>
               <span class="viz-card__index" aria-hidden="true">03</span>
             </div>
-            <p>Every chapter fits on one screen. Every solution reads top to bottom. No sidebars, no popups, no interruptions.</p>
-            <p class="viz-card__stat">Average chapter <b>40 seconds</b> to read</p>
+            <p>Every chapter prints as a clean worksheet. Teal survives the photocopier. Works on any school's B&amp;W laser.</p>
+            <p class="viz-card__stat">Press <b>Ctrl/⌘ P</b> on any page</p>
           </div>
         </article>
 
@@ -1828,8 +1918,8 @@
           <div class="quickstart-block__intro">
             <span class="quickstart-block__number" aria-hidden="true">03</span>
             <div>
-              <h3>Copy what you need</h3>
-              <p>Every formula, every rule, every solution has a copy button. Paste into notes or print clean.</p>
+              <h3>Print it. Study offline.</h3>
+              <p>Press Ctrl/⌘ P on any chapter and it becomes a clean worksheet. Works on a phone, print shop, or school printer.</p>
             </div>
           </div>
           <div class="terminal">
@@ -1837,13 +1927,13 @@
               <i class="terminal__dot" aria-hidden="true"></i>
               <i class="terminal__dot" aria-hidden="true"></i>
               <i class="terminal__dot" aria-hidden="true"></i>
-              <span class="terminal__title">pragyaroot / copy</span>
+              <span class="terminal__title">pragyaroot / print</span>
             </div>
-            <pre aria-label="Copy example"><span class="code-prompt">$ pragyaroot copy "present perfect"</span>
-<span class="code-success">✓ rule copied</span>
-<span class="code-success">✓ 3 examples copied</span>
-<span class="code-success">✓ 2 practice sentences copied</span>
-<span class="code-muted">  Ready to paste in your notes.</span></pre>
+            <pre aria-label="Print example"><span class="code-prompt">$ pragyaroot print "unit-02"</span>
+<span class="code-success">✓ worksheet generated</span>
+<span class="code-success">✓ teal accent preserved for B&amp;W</span>
+<span class="code-success">✓ margins set for A4 staple</span>
+<span class="code-muted">  Ready for the photocopier.</span></pre>
           </div>
         </article>
 
@@ -1866,7 +1956,7 @@
           <button class="pill" data-active="true" role="radio" aria-checked="true" type="button">Revise</button>
           <button class="pill" data-active="false" role="radio" aria-checked="false" type="button">Recap</button>
           <button class="pill" data-active="false" role="radio" aria-checked="false" type="button">Practice</button>
-          <button class="pill" data-active="false" role="radio" aria-checked="false" type="button">Exam</button>
+          <button class="pill" data-active="false" role="radio" aria-checked="false" type="button">Print</button>
         </div>
 
         <div class="alias-selector__detail">
@@ -1903,11 +1993,11 @@
         </article>
         <article class="card">
           <span class="card__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
           </span>
-          <h3>Exam mode</h3>
-          <p>Timed practice papers. Full SEE format. Score at the end.</p>
-          <code>coming soon</code>
+          <h3>Print mode</h3>
+          <p>Turn any chapter into a clean worksheet. Photocopy-safe.</p>
+          <code>Ctrl / ⌘ P</code>
         </article>
       </div>
     </div>
@@ -1995,7 +2085,7 @@
           <p class="eyebrow">Questions</p>
           <h2 class="section-title" id="faq-title">Answers, plainly.</h2>
         </div>
-        <p class="section-copy">The four things students ask most often. If your question is not here, write to us.</p>
+        <p class="section-copy">Four things students ask most often. If your question is not here, write to us.</p>
       </div>
 
       <div class="faq">
@@ -2004,8 +2094,8 @@
           <div class="answer">Yes. Every note, solution, and drill. No accounts. No paywalls. No ads. There is no paid tier in the works. This is a study resource, not a business.</div>
         </details>
         <details>
-          <summary>Which subjects are covered right now?</summary>
-          <div class="answer">Nepali and English are live with full chapter notes, grammar guides, and complete solutions. Science, Mathematics, Social Studies, and Computer Science are in preparation and will land between now and the next exam season.</div>
+          <summary>Can I print chapters and use them offline?</summary>
+          <div class="answer">Yes, and this is deliberate. Every chapter has a print stylesheet that turns the page into a clean worksheet — the accent colour is chosen so it survives a black and white photocopier at a Nepali copy shop, and margins are set so it staples neatly into an A4 booklet. PragyaRoot also installs as an app and works offline for pages you have already visited.</div>
         </details>
         <details>
           <summary>Is this aligned with the CDC syllabus?</summary>
@@ -2024,7 +2114,7 @@
       <div class="closing-cta">
         <p class="eyebrow">Start where you are</p>
         <h2>Pick a subject. Start revising.</h2>
-        <p>Two subjects are ready today. Four more are on the way. Every chapter is free and stays that way.</p>
+        <p>Two subjects are ready today. Four more are on the way. Every chapter is free, and every chapter prints clean.</p>
         <div class="hero-actions">
           <a class="button button--accent" href="#subjects">
             Explore subjects
@@ -2055,7 +2145,7 @@
             <span class="brand-lockup__owner">Class 10 · Nepal</span>
           </span>
         </a>
-        <p>Class 10 study resources for Nepal SEE students. Aligned to the CDC curriculum. Free forever. No accounts.</p>
+        <p>Class 10 study resources for Nepal SEE students. Aligned to the CDC curriculum. Free forever. Every page prints clean.</p>
       </div>
 
       <div class="footer-column">
@@ -2163,7 +2253,7 @@
             'Revise': 'Full chapter notes and solutions',
             'Recap': 'Key points only',
             'Practice': 'Interactive drills',
-            'Exam': 'Timed practice papers'
+            'Print': 'Worksheet for photocopying'
           };
           if (strong) strong.textContent = map[pill.textContent.trim()] || 'Full chapter notes and solutions';
         }
