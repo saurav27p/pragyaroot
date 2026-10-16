@@ -1,1 +1,59 @@
+<aside class="sidebar" id="sidebar" aria-label="Main navigation">
 
+  <div class="sidebar__head">
+    <a href="." class="brand" aria-label="PragyaRoot home">
+      <div class="brand__mark">
+        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgVIBpNidrRIBvOIG6xuJvOsLRUB6DbUF7P0I4kipF1yLD9WPpUj-c5BwtlTBB-drIGQJi58ZF1-kqKeAAL0BlgyaKtOTgldphCdP2-H_C6EnC1gEs4soKlfO50jMuz3TCyHXKh5hwFmqNb6DVxZ2rrLjLOJjI0yhgKnRFMC6RMNTCmseU7L839vJoKMkIz=s1600" alt="PragyaRoot" class="logo-img">
+      </div>
+    </a>
+    <button class="collapse-btn" id="collapseBtn" data-tip="Collapse sidebar" aria-label="Collapse sidebar">
+      <i class="fa-solid fa-angles-left" id="collapseIcon" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <nav class="sidebar__nav">
+
+    <a href="." class="nav-item" data-nav="home">
+      <i class="fa-solid fa-house" aria-hidden="true"></i>
+      <span class="nav-item__text">Home</span>
+    </a>
+
+    <button class="nav-group" data-group="subjects" aria-expanded="false">
+      <i class="fa-solid fa-book" aria-hidden="true"></i>
+      <span class="nav-item__text">Subjects</span>
+      <i class="fa-solid fa-chevron-down nav-group__chev" aria-hidden="true"></i>
+    </button>
+    <div class="nav-sub" data-sub="subjects">
+      <a href="subjects/nepali" class="nav-item nav-item--sub" data-nav="nepali">
+        <span class="nav-item__text">Nepali</span>
+      </a>
+      <a href="subjects/english" class="nav-item nav-item--sub" data-nav="english">
+        <span class="nav-item__text">English</span>
+      </a>
+    </div>
+
+    <button class="nav-group" data-group="grammar" aria-expanded="false">
+      <i class="fa-solid fa-spell-check" aria-hidden="true"></i>
+      <span class="nav-item__text">Grammar</span>
+      <i class="fa-solid fa-chevron-down nav-group__chev" aria-hidden="true"></i>
+    </button>
+    <div class="nav-sub" data-sub="grammar">
+      <a href="grammar/english" class="nav-item nav-item--sub" data-nav="grammar-english">
+        <span class="nav-item__text">English Grammar</span>
+      </a>
+      <a href="grammar/nepali" class="nav-item nav-item--sub" data-nav="grammar-nepali">
+        <span class="nav-item__text">नेपाली व्याकरण</span>
+      </a>
+    </div>
+
+  </nav>
+
+  <div class="sidebar__foot">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <i class="fa-solid fa-moon icon-moon" aria-hidden="true"></i>
+      <i class="fa-solid fa-sun icon-sun" aria-hidden="true"></i>
+      <span>Dark mode</span>
+    </button>
+  </div>
+
+</aside>
