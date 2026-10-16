@@ -1,9 +1,7 @@
 (function () {
 
-  var COMPONENTS_BASE = '/components/';
+  var COMPONENTS_BASE = 'components/';
   var COMPONENT_NAMES = ['header', 'sidebar', 'drawer', 'search', 'footer', 'back-to-top'];
-
-  /* ---------- component loader ---------- */
 
   function loadComponent(name) {
     return fetch(COMPONENTS_BASE + name + '.html')
@@ -19,8 +17,6 @@
       })
       .catch(function () {});
   }
-
-  /* ---------- theme ---------- */
 
   function getStoredTheme() {
     try { return localStorage.getItem('pragyaroot-theme'); }
@@ -54,8 +50,6 @@
       storeTheme(next);
     });
   }
-
-  /* ---------- sidebar collapse ---------- */
 
   function getStoredCollapsed() {
     try { return localStorage.getItem('pragyaroot-sidebar-collapsed') === 'true'; }
@@ -106,8 +100,6 @@
     });
   }
 
-  /* ---------- mobile drawer ---------- */
-
   function openDrawer() {
     var sidebar = document.getElementById('sidebar');
     var overlay = document.getElementById('overlay');
@@ -153,8 +145,6 @@
     });
   }
 
-  /* ---------- sidebar expandable groups ---------- */
-
   function initNavGroups() {
     document.addEventListener('click', function (e) {
       var group = e.target.closest('.nav-group');
@@ -189,8 +179,6 @@
     }
   }
 
-  /* ---------- active nav item ---------- */
-
   function markActive() {
     var path = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
 
@@ -200,15 +188,15 @@
 
     var match = null;
 
-    if (path === '/' || path === '/index') {
+    if (path === '/' || path === '/pragyaroot' || path === '/pragyaroot/index') {
       match = 'home';
-    } else if (path.indexOf('/subjects/nepali') === 0) {
-      match = path === '/subjects/nepali' ? 'nepali' : null;
-    } else if (path.indexOf('/subjects/english') === 0) {
-      match = path === '/subjects/english' ? 'english' : null;
-    } else if (path.indexOf('/grammar/english') === 0) {
+    } else if (path.indexOf('/subjects/nepali') !== -1) {
+      match = 'nepali';
+    } else if (path.indexOf('/subjects/english') !== -1) {
+      match = 'english';
+    } else if (path.indexOf('/grammar/english') !== -1) {
       match = 'grammar-english';
-    } else if (path.indexOf('/grammar/nepali') === 0) {
+    } else if (path.indexOf('/grammar/nepali') !== -1) {
       match = 'grammar-nepali';
     }
 
@@ -218,15 +206,13 @@
     }
   }
 
-  /* ---------- search ---------- */
-
   var searchIndex = null;
   var searchLoading = null;
 
   function loadSearchIndex() {
     if (searchIndex) return Promise.resolve(searchIndex);
     if (searchLoading) return searchLoading;
-    searchLoading = fetch('/search-index.json')
+    searchLoading = fetch('search-index.json')
       .then(function (r) { return r.ok ? r.json() : []; })
       .then(function (data) {
         searchIndex = Array.isArray(data) ? data : [];
@@ -263,6 +249,14 @@
     return results;
   }
 
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
   function renderResult(item) {
     var a = document.createElement('a');
     a.className = 'search-result';
@@ -273,14 +267,6 @@
       '<div class="search-result__meta">' + escapeHtml(item.subject || '') + ' · ' + escapeHtml(item.type || '') + '</div>' +
       (item.snippet ? '<div class="search-result__snippet">' + escapeHtml(item.snippet) + '</div>' : '');
     return a;
-  }
-
-  function escapeHtml(s) {
-    return String(s)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
   }
 
   function renderResults(container, results, query) {
@@ -389,8 +375,6 @@
     }
   }
 
-  /* ---------- back to top ---------- */
-
   function initBackToTop() {
     var btn = document.getElementById('backToTop');
     if (!btn) return;
@@ -407,8 +391,6 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
-
-  /* ---------- init ---------- */
 
   function init() {
     initTheme();
